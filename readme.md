@@ -26,4 +26,4 @@
 * поправить файл: ```node_modules/leaflet/dist/leaflet.css```:
   * 351 и 356 стр: заменить ```images/layers-2x.png``` на ```images/layers.svg```;
 * в терминале ввести: ```npm run build``` (копирование скриптов и стилей в public);
-* в терминале ввести: ```npm run server``` (сервер должен быть доступен на ```http://localhost:8080).
+* в терминале ввести: ```npm run server``` (сервер должен быть доступен на ```http://localhost:8080```).
