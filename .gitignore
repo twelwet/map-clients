@@ -11,3 +11,6 @@ Thumbs.db
 .idea
 *.sublime*
 .vscode
+
+#public
+public/js/webmap.js
