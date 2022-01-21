@@ -2,7 +2,7 @@
 
 const L = require(`leaflet`);
 const {MapSetting, Icon, DISTANCE_LIMIT} = require(`./constants`);
-const {mapIconsConfig, getTileLayer, getFiberLayer, getNodesPins, getPins} = require(`./map-utils`);
+const {mapIconsConfig, getTileLayer, getFiberLayer, getNodesPins, getPins, getWholeDistance} = require(`./map-utils`);
 
 const nodes = require(`../data/result/nodes`);
 const objects = require(`../data/result/objects`);
@@ -31,10 +31,13 @@ const fiberLayerCityNet = getFiberLayer(fiberLinesCityNet);
 
 const tileLayer = getTileLayer();
 
+const backboneDistance = (getWholeDistance(fiberLayerBackbone) / 1000).toFixed(0);
+const cityNetDistance = (getWholeDistance(fiberLayerCityNet) / 1000).toFixed(0);
+
 const overlayMaps = {
   [`Узлы`]: nodesLayer,
-  [`ВОЛС Магистраль`]: fiberLayerBackbone,
-  [`ВОЛС СПД города`]: fiberLayerCityNet,
+  [`ВОЛС Магистраль, ${backboneDistance} км`]: fiberLayerBackbone,
+  [`ВОЛС СПД города, ${cityNetDistance} км`]: fiberLayerCityNet,
   [`Подключены, адресов: ${clientsPins.length}`]: clientsLayer,
   [`Удаленные объекты, адресов: ${remoteClientsPins.length}`]: remoteClientsLayer,
   [`Не подкл., адресов: ${unClientsPins.length}`]: unClientsLayer,

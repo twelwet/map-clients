@@ -93,4 +93,24 @@ const getPins = (objects, isBuilt, isContracted, iconPath, isDistanceFilter, dis
   return pins;
 };
 
-module.exports = {mapIconsConfig, getTileLayer, getFiberLayer, getNodesPins, getPins};
+const getDistance = (item) => {
+  const coordinates = item.feature.geometry.coordinates;
+  let distance = 0;
+  for (const i of coordinates.keys()) {
+    if (i < coordinates.length - 1) {
+      distance = distance + L.latLng(coordinates[i]).distanceTo(coordinates[i + 1]);
+    }
+  }
+  return distance;
+};
+
+const getWholeDistance = (geoJsonLayer) => {
+  const segments = geoJsonLayer.getLayers();
+  let wholeDistance = 0;
+  for (const segment of segments) {
+    wholeDistance = wholeDistance + getDistance(segment);
+  }
+  return wholeDistance;
+};
+
+module.exports = {mapIconsConfig, getTileLayer, getFiberLayer, getNodesPins, getPins, getWholeDistance};
