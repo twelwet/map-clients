@@ -2,7 +2,6 @@
 
 const L = require(`leaflet`);
 const {MapSetting} = require(`./constants`);
-const fiberLines = require(`../data/result/fiber-lines`);
 
 const mapIconsConfig = () => {
   const {icon, Marker} = L;
@@ -33,7 +32,7 @@ const getTileLayer = () => {
   });
 };
 
-const getFiberLayer = () => L.geoJSON(fiberLines, {
+const getFiberLayer = (fiberLines) => L.geoJSON(fiberLines, {
   onEachFeature: (feature, layer) => {
     if (feature.properties.description === undefined) {
       feature.properties.description = `Заполнить марку кабеля`;
