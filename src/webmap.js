@@ -47,7 +47,7 @@ const overlayMaps = {
 const map = L.map(`map`, {
   center: MapSetting.CENTER,
   zoom: MapSetting.ZOOM,
-  layers: [nodesLayer, fiberLayerBackbone, clientsLayer, unClientsLayer],
+  layers: [nodesLayer, fiberLayerBackbone, clientsLayer, remoteClientsLayer],
 });
 
 tileLayer.addTo(map);
