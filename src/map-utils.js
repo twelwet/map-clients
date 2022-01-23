@@ -69,13 +69,22 @@ const getUniqueLocations = (data) => {
   return uniqueLocations;
 };
 
-const getPins = (objects, isBuilt, isContracted, iconPath, isDistanceFilter, distanceLimit) => {
-  let filteredObjects = [];
-  if (isDistanceFilter) {
-    filteredObjects = objects.filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted && +item[`node_distance`] < distanceLimit);
-  } else {
-    filteredObjects = objects.filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted);
-  }
+const getClients = (objects, isBuilt = `да`, isContracted = `да`) => objects
+  .filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted);
+
+const getRemoteClients = (objects, isBuilt = `нет`, isContracted = `да`) => objects
+  .filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted);
+
+const getUnClients = (objects, isBuilt = `да`, isContracted = `нет`) => objects
+  .filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted);
+
+const getAllPlanningClients = (objects, isBuilt = `нет`, isContracted = `нет`, distanceLimit) => objects
+  .filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted && +item[`node_distance`] < distanceLimit);
+
+const getPlan2022Clients = (objects) => objects
+  .filter((item) => item[`plan_2022`] === `да`);
+
+const getPins = (filteredObjects, iconPath) => {
   const uniqueLocations = getUniqueLocations(filteredObjects);
 
   const pinIcon = L.icon({
@@ -113,4 +122,16 @@ const getWholeDistance = (geoJsonLayer) => {
   return wholeDistance;
 };
 
-module.exports = {mapIconsConfig, getTileLayer, getFiberLayer, getNodesPins, getPins, getWholeDistance};
+module.exports = {
+  mapIconsConfig,
+  getTileLayer,
+  getFiberLayer,
+  getNodesPins,
+  getPins,
+  getWholeDistance,
+  getClients,
+  getRemoteClients,
+  getUnClients,
+  getAllPlanningClients,
+  getPlan2022Clients,
+};

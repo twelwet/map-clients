@@ -29,7 +29,8 @@ const Icon = {
     REMOTE_CLIENT: `images/marker-remote-client.svg`,
     UN_CLIENT: `images/marker-un-client.svg`,
     PLAN_TO_BUILD: `images/marker-plan-to-build.svg`,
-  }
+    PLAN_2022: `images/marker-plan-2022.svg`,
+  },
 };
 
 const DISTANCE_LIMIT = 400;

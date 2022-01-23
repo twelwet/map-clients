@@ -2,7 +2,19 @@
 
 const L = require(`leaflet`);
 const {MapSetting, Icon, DISTANCE_LIMIT} = require(`./constants`);
-const {mapIconsConfig, getTileLayer, getFiberLayer, getNodesPins, getPins, getWholeDistance} = require(`./map-utils`);
+const {
+  mapIconsConfig,
+  getTileLayer,
+  getFiberLayer,
+  getNodesPins,
+  getPins,
+  getWholeDistance,
+  getClients,
+  getRemoteClients,
+  getUnClients,
+  getAllPlanningClients,
+  getPlan2022Clients,
+} = require(`./map-utils`);
 
 const {nodes, objects, fiberLinesBackbone, fiberLinesCityNet} = require(`../data`);
 
@@ -11,17 +23,26 @@ mapIconsConfig();
 const nodesPins = getNodesPins(nodes);
 const nodesLayer = L.layerGroup(nodesPins);
 
-const clientsPins = getPins(objects, `да`, `да`, Icon.Path.CLIENT, false, 0);
+const clients = getClients(objects);
+const remoteClients = getRemoteClients(objects);
+const unClients = getUnClients(objects);
+const allPlanningClients = getAllPlanningClients(objects, `нет`, `нет`, DISTANCE_LIMIT);
+const plan2022Clients = getPlan2022Clients(objects);
+
+const clientsPins = getPins(clients, Icon.Path.CLIENT);
 const clientsLayer = L.layerGroup(clientsPins);
 
-const remoteClientsPins = getPins(objects, `нет`, `да`, Icon.Path.REMOTE_CLIENT, false, 0);
+const remoteClientsPins = getPins(remoteClients, Icon.Path.REMOTE_CLIENT);
 const remoteClientsLayer = L.layerGroup(remoteClientsPins);
 
-const unClientsPins = getPins(objects, `да`, `нет`, Icon.Path.UN_CLIENT, false, 0);
+const unClientsPins = getPins(unClients, Icon.Path.UN_CLIENT);
 const unClientsLayer = L.layerGroup(unClientsPins);
 
-const buildClientsPins = getPins(objects, `нет`, `нет`, Icon.Path.PLAN_TO_BUILD, true, DISTANCE_LIMIT);
-const buildClientsLayer = L.layerGroup(buildClientsPins);
+const allPlanningClientsPins = getPins(allPlanningClients, Icon.Path.PLAN_TO_BUILD);
+const allPlanningClientsLayer = L.layerGroup(allPlanningClientsPins);
+
+const plan2022ClientsPins = getPins(plan2022Clients, Icon.Path.PLAN_2022);
+const plan2022ClientsLayer = L.layerGroup(plan2022ClientsPins);
 
 const fiberLayerBackbone = getFiberLayer(fiberLinesBackbone);
 const fiberLayerCityNet = getFiberLayer(fiberLinesCityNet);
@@ -38,7 +59,8 @@ const overlayMaps = {
   [`Подключены, адресов: ${clientsPins.length}`]: clientsLayer,
   [`Удаленные объекты, адресов: ${remoteClientsPins.length}`]: remoteClientsLayer,
   [`Не подкл., адресов: ${unClientsPins.length}`]: unClientsLayer,
-  [`План, адресов: ${buildClientsPins.length}`]: buildClientsLayer,
+  [`План-2022, адресов: ${plan2022ClientsPins.length}`]: plan2022ClientsLayer,
+  [`Глобальный план, адресов: ${allPlanningClientsPins.length}`]: allPlanningClientsLayer,
 };
 
 const map = L.map(`map`, {
