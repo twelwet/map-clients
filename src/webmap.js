@@ -4,10 +4,10 @@ const L = require(`leaflet`);
 const {MapSetting, Icon, DISTANCE_LIMIT} = require(`./constants`);
 const {mapIconsConfig, getTileLayer, getFiberLayer, getNodesPins, getPins, getWholeDistance} = require(`./map-utils`);
 
-const nodes = require(`../data/result/nodes`);
-const objects = require(`../data/result/objects`);
-const fiberLinesBackbone = require(`../data/result/fiber-lines`);
-const fiberLinesCityNet = require(`../data/result/fiber-lines-city-net`);
+const nodes = require(`../data/json/nodes.json`);
+const objects = require(`../data/json/objects.json`);
+const fiberLinesBackbone = require(`../data/json/fiber-lines-backbone.json`);
+const fiberLinesCityNet = require(`../data/json/fiber-lines-city-net.json`);
 
 mapIconsConfig();
 
