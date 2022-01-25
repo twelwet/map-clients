@@ -35,4 +35,21 @@ const Icon = {
 
 const DISTANCE_LIMIT = 400;
 
-module.exports = {MapSetting, FilePath, Icon, DISTANCE_LIMIT};
+const FIELDS = [
+  `node_id`,
+  `inn`,
+  `name`,
+  `note`,
+  `type`,
+  `type_description`,
+  `address`,
+  `latitude`,
+  `longitude`,
+  `is_contracted`,
+  `is_built`,
+  `plan_2022`,
+  `node_distance`,
+  `cost`,
+];
+
+module.exports = {MapSetting, FilePath, Icon, DISTANCE_LIMIT, FIELDS};
