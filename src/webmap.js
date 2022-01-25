@@ -16,7 +16,7 @@ const {
   getPlan2022Clients,
 } = require(`./map-utils`);
 
-const {nodes, objects, fiberLinesBackbone, fiberLinesCityNet} = require(`../data`);
+const {nodes, objects, backboneNet, cityNet, jkhNet} = require(`../data`);
 
 mapIconsConfig();
 
@@ -44,18 +44,21 @@ const allPlanningClientsLayer = L.layerGroup(allPlanningClientsPins);
 const plan2022ClientsPins = getPins(plan2022Clients, Icon.Path.PLAN_2022);
 const plan2022ClientsLayer = L.layerGroup(plan2022ClientsPins);
 
-const fiberLayerBackbone = getFiberLayer(fiberLinesBackbone);
-const fiberLayerCityNet = getFiberLayer(fiberLinesCityNet);
+const fiberLayerBackbone = getFiberLayer(backboneNet);
+const fiberLayerCityNet = getFiberLayer(cityNet);
+const fiberLayerJkhNet = getFiberLayer(jkhNet);
 
 const tileLayer = getTileLayer();
 
 const backboneDistance = (getWholeDistance(fiberLayerBackbone) / 1000).toFixed(0);
 const cityNetDistance = (getWholeDistance(fiberLayerCityNet) / 1000).toFixed(0);
+const jkhNetDistance = (getWholeDistance(fiberLayerJkhNet) / 1000).toFixed(0);
 
 const overlayMaps = {
-  [`Узлы`]: nodesLayer,
+  [`Узлы Магистрали`]: nodesLayer,
   [`ВОЛС Магистраль, ${backboneDistance} км`]: fiberLayerBackbone,
   [`ВОЛС СПД города, ${cityNetDistance} км`]: fiberLayerCityNet,
+  [`ВОЛС Дирекция ЖКХ, ${jkhNetDistance} км`]: fiberLayerJkhNet,
   [`Подключены, адресов: ${clientsPins.length}`]: clientsLayer,
   [`Удаленные объекты, адресов: ${remoteClientsPins.length}`]: remoteClientsLayer,
   [`Не подкл., адресов: ${unClientsPins.length}`]: unClientsLayer,
