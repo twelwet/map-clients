@@ -97,7 +97,7 @@ const getPins = (filteredObjects, iconPath) => {
   for (const location of uniqueLocations) {
     pins
       .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
-      .bindPopup(`${location[`clients`].map((item, i) => `${i + 1}. ${item}`).join(`<br> `)}`));
+      .bindPopup(`<b>${location[`address`]}:</b><br>${location[`clients`].map((item, i) => `${i + 1}. ${item}`).join(`<br> `)}`));
   }
   return pins;
 };
