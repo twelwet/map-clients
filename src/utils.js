@@ -28,6 +28,7 @@ const getCsvFromJson = (jsonData, fields) => {
     return parse(jsonData, opts);
   } catch (err) {
     console.error(err);
+    return err;
   }
 };
 
