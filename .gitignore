@@ -13,4 +13,6 @@ Thumbs.db
 .vscode
 
 #public
-public/js/webmap.js
+public/js/webmap-clients.js
+public/js/webmap-ivn.js
+public/js/webmap-main.js

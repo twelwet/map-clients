@@ -13,11 +13,21 @@ app.use(express.json());
 const PUBLIC_DIR = `../public`;
 
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
+console.log(path.resolve(__dirname, PUBLIC_DIR));
 app.use(express.urlencoded({extended: false}));
 
 app.get(`/`, async (req, res) => {
   res.sendFile(path.join(__dirname, `index.html`));
 });
+
+app.get(`/clients`, async (req, res) => {
+  res.sendFile(path.join(__dirname, PUBLIC_DIR, `clients.html`));
+});
+
+app.get(`/ivn`, async (req, res) => {
+  res.sendFile(path.join(__dirname, PUBLIC_DIR, `ivn.html`));
+});
+
 app.get(`/*`, async (req, res) => {
   res.redirect(`/`);
 });
