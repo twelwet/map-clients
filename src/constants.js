@@ -38,7 +38,7 @@ const Icon = {
     UN_CLIENT: `images/marker-un-client.svg`,
     PLAN_TO_BUILD: `images/marker-plan-to-build.svg`,
     PLAN_2022: `images/marker-plan-2022.svg`,
-    IVN: `images/marker-ivn.svg`,
+    IVN_BOX: `images/marker-ivn-box.svg`,
   },
 };
 
