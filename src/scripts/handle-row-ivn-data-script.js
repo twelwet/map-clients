@@ -43,9 +43,9 @@ const points = getCleanPoints(rawPoints, `<br/>`);
 // const boxes = points.filter((item) => item.name.includes(`связи`));
 const cameras = points.filter((item) => !item.name.includes(`связи`));
 
-for (const camera of cameras) {
-  camera[`name`].includes(`-П`) ? camera[`description`] = `Поворотная камера` : camera[`description`] = `Стационарная камера`;
-}
+// for (const camera of cameras) {
+//   camera[`name`].includes(`-П`) ? camera[`description`] = `Поворотная камера` : camera[`description`] = `Стационарная камера`;
+// }
 
 // saveToFile(FilePath.IvnBoxes.CSV, getCsvFromJson(boxes, DEFAULT_FIELDS))
 //   .then(() => console.log(`Operation is successful.`));
