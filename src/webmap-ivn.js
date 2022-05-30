@@ -1,26 +1,32 @@
 'use strict';
 
 const L = require(`leaflet`);
-const {MapSetting} = require(`./constants`);
+const {MapSetting, Icon} = require(`./constants`);
 const {
   mapIconsConfig,
   getTileLayer,
   getFiberLayer,
   getNodesPins,
   getWholeDistance,
+  getPins,
 } = require(`./map-utils`);
 
-const {nodes, backboneNet, cityNet, jkhNet, ivn} = require(`../data`);
+const {nodes, backboneNet, cityNet, jkhNet, ivnBoxes, ivnCameras} = require(`../data`);
 
 mapIconsConfig();
 
 const nodesPins = getNodesPins(nodes);
 const nodesLayer = L.layerGroup(nodesPins);
 
+const ivnBoxesPins = getPins(ivnBoxes, Icon.Path.IVN_BOX, false);
+const ivnBoxesLayer = L.layerGroup(ivnBoxesPins);
+
+const ivnCamerasPins = getPins(ivnCameras, Icon.Path.CLIENT, false);
+const ivnCamerasLayer = L.layerGroup(ivnCamerasPins);
+
 const fiberLayerBackbone = getFiberLayer(backboneNet);
 const fiberLayerCityNet = getFiberLayer(cityNet);
 const fiberLayerJkhNet = getFiberLayer(jkhNet);
-const ivnLayer = getFiberLayer(ivn);
 
 const tileLayer = getTileLayer();
 
@@ -33,13 +39,14 @@ const overlayMaps = {
   [`ВОЛС Магистраль, ${backboneDistance} км`]: fiberLayerBackbone,
   [`ВОЛС СПД города, ${cityNetDistance} км`]: fiberLayerCityNet,
   [`ВОЛС Дирекция ЖКХ, ${jkhNetDistance} км`]: fiberLayerJkhNet,
-  [`ИВН`]: ivnLayer,
+  [`ИВН-РМ-ТКШ, ${ivnBoxesPins.length} шт`]: ivnBoxesLayer,
+  [`ИВН-РМ-Камеры ${ivnCamerasPins.length} шт`]: ivnCamerasLayer,
 };
 
 const map = L.map(`map`, {
   center: MapSetting.CENTER,
   zoom: MapSetting.ZOOM,
-  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, ivnLayer],
+  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, ivnBoxesLayer],
 });
 
 tileLayer.addTo(map);
