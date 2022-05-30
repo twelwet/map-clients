@@ -11,7 +11,7 @@ const pointsRawData = rawIvnData[`features`];
 const rawPoints = pointsRawData.map((item) => ({
   [`node_id`]: `?`,
   name: item.properties.description || `Unknown`,
-  address: `?`,
+  address: ``,
   description: ``,
   latitude: item.geometry.coordinates[1],
   longitude: item.geometry.coordinates[0],
@@ -40,11 +40,15 @@ const getCleanPoints = (data, garbage) => {
 
 const points = getCleanPoints(rawPoints, `<br/>`);
 
-const boxes = points.filter((item) => item.name.includes(`связи`));
+// const boxes = points.filter((item) => item.name.includes(`связи`));
 const cameras = points.filter((item) => !item.name.includes(`связи`));
 
-saveToFile(FilePath.IvnBoxes.CSV, getCsvFromJson(boxes, DEFAULT_FIELDS))
-  .then(() => console.log(`Operation is successful.`));
+for (const camera of cameras) {
+  camera[`name`].includes(`-П`) ? camera[`description`] = `Поворотная камера` : camera[`description`] = `Стационарная камера`;
+}
+
+// saveToFile(FilePath.IvnBoxes.CSV, getCsvFromJson(boxes, DEFAULT_FIELDS))
+//   .then(() => console.log(`Operation is successful.`));
 
 saveToFile(FilePath.IvnCameras.CSV, getCsvFromJson(cameras, DEFAULT_FIELDS))
   .then(() => console.log(`Operation is successful.`));
