@@ -13,8 +13,8 @@ const rawPoints = pointsRawData.map((item) => ({
   name: item.properties.description || `Unknown`,
   address: `?`,
   description: ``,
-  latitude: item.geometry.coordinates[0],
-  longitude: item.geometry.coordinates[1],
+  latitude: item.geometry.coordinates[1],
+  longitude: item.geometry.coordinates[0],
   [`node_distance`]: `?`,
   cost: `?`,
 }));
