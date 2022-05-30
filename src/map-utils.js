@@ -84,21 +84,31 @@ const getAllPlanningClients = (objects, isBuilt = `нет`, isContracted = `не
 const getPlan2022Clients = (objects) => objects
   .filter((item) => item[`plan_2022`] === `да`);
 
-const getPins = (filteredObjects, iconPath) => {
-  const uniqueLocations = getUniqueLocations(filteredObjects);
-
+const getPins = (filteredObjects, iconPath, isMakeUniqueAddresses = true) => {
+  // TODO divide into two functions: getPins and getUniqueLocations
   const pinIcon = L.icon({
     iconUrl: iconPath,
     iconSize: [30, 30],
     iconAnchor: [15, 20],
   });
-
   const pins = [];
-  for (const location of uniqueLocations) {
-    pins
-      .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
-      .bindPopup(`<b>${location[`address`]}:</b><br>${location[`clients`].map((item, i) => `${i + 1}. ${item}`).join(`<br> `)}`));
+
+  if (isMakeUniqueAddresses) {
+    const uniqueLocations = getUniqueLocations(filteredObjects);
+
+    for (const location of uniqueLocations) {
+      pins
+        .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
+          .bindPopup(`<b>${location[`address`]}:</b><br>${location[`clients`].map((item, i) => `${i + 1}. ${item}`).join(`<br> `)}`));
+    }
+  } else {
+    for (const location of filteredObjects) {
+      pins
+        .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
+          .bindPopup(`<b>${location[`name`]}</b>`));
+    }
   }
+
   return pins;
 };
 
