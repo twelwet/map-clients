@@ -8,6 +8,7 @@ const jkhNet = require(`./json/fiber-lines-jkh-net.json`);
 const ivnBoxes = require(`./json/ivn-boxes.json`);
 const ivnCameras = require(`./json/ivn-cameras.json`);
 const rawIvnData = require(`./raw/ivn.json`);
+const rawIvnMunData = require(`./raw/ivn-mun.json`);
 
 module.exports = {
   nodes,
@@ -16,6 +17,7 @@ module.exports = {
   cityNet,
   jkhNet,
   rawIvnData,
+  rawIvnMunData,
   ivnBoxes,
   ivnCameras,
 };
