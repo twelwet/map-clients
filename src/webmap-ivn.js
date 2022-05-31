@@ -11,7 +11,7 @@ const {
   getPins,
 } = require(`./map-utils`);
 
-const {nodes, backboneNet, cityNet, jkhNet, ivnBoxes, ivnCameras} = require(`../data`);
+const {nodes, backboneNet, cityNet, jkhNet, ivnBoxes, ivnCameras, ivnMunCameras} = require(`../data`);
 
 mapIconsConfig();
 
@@ -23,6 +23,9 @@ const ivnBoxesLayer = L.layerGroup(ivnBoxesPins);
 
 const ivnCamerasPins = getPins(ivnCameras, Icon.Path.CLIENT, false);
 const ivnCamerasLayer = L.layerGroup(ivnCamerasPins);
+
+const ivnMunCamerasPins = getPins(ivnMunCameras, Icon.Path.CLIENT, false);
+const ivnMunCamerasLayer = L.layerGroup(ivnMunCamerasPins);
 
 const fiberLayerBackbone = getFiberLayer(backboneNet);
 const fiberLayerCityNet = getFiberLayer(cityNet);
@@ -41,6 +44,7 @@ const overlayMaps = {
   [`ВОЛС Дирекция ЖКХ, ${jkhNetDistance} км`]: fiberLayerJkhNet,
   [`ИВН-РМ-ТКШ, ${ivnBoxesPins.length} шт`]: ivnBoxesLayer,
   [`ИВН-РМ-Камеры ${ivnCamerasPins.length} шт`]: ivnCamerasLayer,
+  [`ИВН-МУН-Камеры ${ivnMunCamerasPins.length} шт`]: ivnMunCamerasLayer,
 };
 
 const map = L.map(`map`, {
