@@ -11,6 +11,7 @@ const pointsRawData = rawIvnMunData[`features`];
 const rawPoints = pointsRawData.filter((item) => item[`geometry`][`type`] === `Point`);
 
 const cameras = rawPoints.map((item, index) => ({
+  // TODO добавить поле цвета метки и по нему определить - поворотная, стационарная или ТКШ
   [`node_id`]: `?`,
   name: `ИВН-МУН-${index + 1}`,
   address: ``,
@@ -21,5 +22,5 @@ const cameras = rawPoints.map((item, index) => ({
   cost: `?`,
 }));
 
-saveToFile(FilePath.IvnMunCameras.CSV, getCsvFromJson(cameras, DEFAULT_FIELDS))
-  .then(() => console.log(`Operation is successful.`));
+// saveToFile(FilePath.IvnMunCameras.CSV, getCsvFromJson(cameras, DEFAULT_FIELDS))
+//   .then(() => console.log(`Operation is successful.`));
