@@ -12,7 +12,10 @@ Thumbs.db
 *.sublime*
 .vscode
 
-#public
+# public
 public/js/webmap-clients.js
 public/js/webmap-ivn.js
 public/js/webmap-main.js
+
+# raw
+data/row/*
