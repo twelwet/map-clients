@@ -6,6 +6,7 @@ const backboneNetRaw = require(`./json/fiber-lines-backbone.json`);
 const cityNet = require(`./json/fiber-lines-city-net.json`);
 const jkhNet = require(`./json/fiber-lines-jkh-net.json`);
 const ivnBoxes = require(`./json/ivn-boxes.json`);
+const ivnMunBoxes = require(`./json/ivn-mun-boxes.json`);
 const ivnCameras = require(`./json/ivn-cameras.json`);
 const ivnMunCameras = require(`./json/ivn-mun-cameras.json`);
 const rawIvnData = require(`./raw/ivn.json`);
@@ -28,6 +29,7 @@ module.exports = {
   rawIvnData,
   rawIvnMunData,
   ivnBoxes,
+  ivnMunBoxes,
   ivnCameras,
   ivnMunCameras,
 };

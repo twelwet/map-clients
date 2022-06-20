@@ -11,7 +11,7 @@ const {
   getPins,
 } = require(`./map-utils`);
 
-const {nodes, backboneNet, cityNet, jkhNet, ivnBoxes, ivnCameras, ivnMunCameras} = require(`../data`);
+const {nodes, backboneNet, cityNet, jkhNet, ivnBoxes, ivnMunBoxes, ivnCameras, ivnMunCameras} = require(`../data`);
 
 mapIconsConfig();
 
@@ -20,6 +20,9 @@ const nodesLayer = L.layerGroup(nodesPins);
 
 const ivnBoxesPins = getPins(ivnBoxes, Icon.Path.IVN_BOX, false);
 const ivnBoxesLayer = L.layerGroup(ivnBoxesPins);
+
+const ivnMunBoxesPins = getPins(ivnMunBoxes, Icon.Path.IVN_BOX, false);
+const ivnMunBoxesLayer = L.layerGroup(ivnMunBoxesPins);
 
 const ivnCamerasPins = getPins(ivnCameras, Icon.Path.CLIENT, false);
 const ivnCamerasLayer = L.layerGroup(ivnCamerasPins);
@@ -44,13 +47,14 @@ const overlayMaps = {
   [`ВОЛС Дирекция ЖКХ, ${jkhNetDistance} км`]: fiberLayerJkhNet,
   [`ИВН-РМ-ТКШ, ${ivnBoxesPins.length} шт`]: ivnBoxesLayer,
   [`ИВН-РМ-Камеры ${ivnCamerasPins.length} шт`]: ivnCamerasLayer,
+  [`ИВН-МУН-ТКШ ${ivnMunBoxesPins.length} шт`]: ivnMunBoxesLayer,
   [`ИВН-МУН-Камеры ${ivnMunCamerasPins.length} шт`]: ivnMunCamerasLayer,
 };
 
 const map = L.map(`map`, {
   center: MapSetting.CENTER,
   zoom: MapSetting.ZOOM,
-  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, ivnBoxesLayer],
+  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, ivnCamerasLayer],
 });
 
 tileLayer.addTo(map);
