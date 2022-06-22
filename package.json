@@ -10,8 +10,9 @@
     "copy-leaflet-styles": "cp node_modules/leaflet/dist/leaflet.css public/css/leaflet.css",
     "build-webmap-clients": "browserify src/webmap-clients.js -o public/js/webmap-clients.js",
     "build-webmap-ivn": "browserify src/webmap-ivn.js -o public/js/webmap-ivn.js",
+    "build-webmap-fvf": "browserify src/webmap-fvf.js -o public/js/webmap-fvf.js",
     "build-webmap-main": "browserify src/webmap-main.js -o public/js/webmap-main.js",
-    "build": "npm run copy-leaflet-styles & npm run build-webmap-main & npm run build-webmap-clients & npm run build-webmap-ivn",
+    "build": "npm run copy-leaflet-styles & npm run build-webmap-main & npm run build-webmap-clients & npm run build-webmap-ivn & npm run build-webmap-fvf",
     "prepare-json": "node src/scripts/prepare-json-script.js"
   },
   "keywords": [],

@@ -28,6 +28,10 @@ app.get(`/ivn`, async (req, res) => {
   res.sendFile(path.join(__dirname, PUBLIC_DIR, `ivn.html`));
 });
 
+app.get(`/fvf`, async (req, res) => {
+  res.sendFile(path.join(__dirname, PUBLIC_DIR, `fvf.html`));
+});
+
 app.get(`/*`, async (req, res) => {
   res.redirect(`/`);
 });

@@ -16,6 +16,7 @@ Thumbs.db
 public/js/webmap-clients.js
 public/js/webmap-ivn.js
 public/js/webmap-main.js
+public/js/webmap-fvf.js
 
 # raw
 data/row/*

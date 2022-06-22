@@ -37,6 +37,10 @@ const FilePath = {
     CSV: `data/csv/ivn-mun-cameras.csv`,
     JSON: `data/json/ivn-mun-cameras.json`,
   },
+  FvfFutureLocations: {
+    CSV: `data/csv/fvf-future-locations.csv`,
+    JSON: `data/json/fvf-future-locations.json`,
+  },
 };
 
 const Icon = {

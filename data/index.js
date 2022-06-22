@@ -9,8 +9,10 @@ const ivnBoxes = require(`./json/ivn-boxes.json`);
 const ivnMunBoxes = require(`./json/ivn-mun-boxes.json`);
 const ivnCameras = require(`./json/ivn-cameras.json`);
 const ivnMunCameras = require(`./json/ivn-mun-cameras.json`);
+const fvfFutureLocations = require(`./json/fvf-future-locations.json`);
 const rawIvnData = require(`./raw/ivn.json`);
 const rawIvnMunData = require(`./raw/ivn-mun.json`);
+const rawFvfFutureLocationsData = require(`./raw/fvf-future-locations.json`);
 
 const backboneNetLineStrings = backboneNetRaw[`features`].filter((item) => item[`geometry`][`type`] === `LineString`);
 
@@ -32,4 +34,6 @@ module.exports = {
   ivnMunBoxes,
   ivnCameras,
   ivnMunCameras,
+  rawFvfFutureLocationsData,
+  fvfFutureLocations,
 };
