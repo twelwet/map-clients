@@ -37,9 +37,9 @@ const FilePath = {
     CSV: `data/csv/ivn-mun-cameras.csv`,
     JSON: `data/json/ivn-mun-cameras.json`,
   },
-  FvfFutureLocations: {
-    CSV: `data/csv/fvf-future-locations.csv`,
-    JSON: `data/json/fvf-future-locations.json`,
+  Fvf: {
+    CSV: `data/csv/fvf.csv`,
+    JSON: `data/json/fvf.json`,
   },
 };
 
@@ -73,4 +73,20 @@ const FIELDS = [
   `cost`,
 ];
 
-module.exports = {MapSetting, FilePath, Icon, DISTANCE_LIMIT, FIELDS};
+const FVF_FIELDS = [
+  `node_id`,
+  `object_type`,
+  `contractor`,
+  `name`,
+  `is_work`,
+  `model`,
+  `vendor`,
+  `address`,
+  `description`,
+  `latitude`,
+  `longitude`,
+  `node_distance`,
+  `cost`,
+];
+
+module.exports = {MapSetting, FilePath, Icon, DISTANCE_LIMIT, FIELDS, FVF_FIELDS};

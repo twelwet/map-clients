@@ -14,4 +14,4 @@ prepareJson(FilePath.IvnBoxes.CSV, FilePath.IvnBoxes.JSON);
 prepareJson(FilePath.IvnMunBoxes.CSV, FilePath.IvnMunBoxes.JSON);
 prepareJson(FilePath.IvnCameras.CSV, FilePath.IvnCameras.JSON);
 prepareJson(FilePath.IvnMunCameras.CSV, FilePath.IvnMunCameras.JSON);
-prepareJson(FilePath.FvfFutureLocations.CSV, FilePath.FvfFutureLocations.JSON);
+prepareJson(FilePath.Fvf.CSV, FilePath.Fvf.JSON);
