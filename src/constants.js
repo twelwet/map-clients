@@ -51,6 +51,14 @@ const Icon = {
     PLAN_TO_BUILD: `images/marker-plan-to-build.svg`,
     PLAN_2022: `images/marker-plan-2022.svg`,
     IVN_BOX: `images/marker-ivn-box.svg`,
+    VOKORD: `images/vokord.svg`,
+    FORSAZH: `images/forsazh.svg`,
+    POTOK: `images/potok.svg`,
+    PEREKRESTOK: `images/perekrestok.svg`,
+    RADAR: `images/radar.svg`,
+    STRELKA: `images/strelka.svg`,
+    STRELKA_DAMAGED: `images/strelka-damaged.svg`,
+    FVF_PLACES: `images/fvf-places.svg`,
   },
 };
 
