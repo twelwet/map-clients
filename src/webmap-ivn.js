@@ -13,6 +13,12 @@ const {
 
 const {nodes, backboneNet, cityNet, jkhNet, ivnBoxes, ivnMunBoxes, ivnCameras, ivnMunCameras} = require(`../data`);
 
+const ivnCamerasStatic = ivnCameras.filter((item) => item[`description`].includes(`Стационарная`));
+const ivnCamerasDynamic = ivnCameras.filter((item) => item[`description`].includes(`Поворотная`));
+
+const ivnMunCamerasStatic = ivnMunCameras.filter((item) => item[`description`].includes(`Стационарная`));
+const ivnMunCamerasDynamic = ivnMunCameras.filter((item) => item[`description`].includes(`Поворотная`));
+
 mapIconsConfig();
 
 const nodesPins = getNodesPins(nodes);
@@ -24,10 +30,14 @@ const ivnBoxesLayer = L.layerGroup(ivnBoxesPins);
 const ivnMunBoxesPins = getIvnPins(ivnMunBoxes, Icon.Path.IVN_BOX);
 const ivnMunBoxesLayer = L.layerGroup(ivnMunBoxesPins);
 
-const ivnCamerasPins = getIvnPins(ivnCameras, Icon.Path.CLIENT);
+const ivnCamerasStaticPins = getIvnPins(ivnCamerasStatic, Icon.Path.IVN_CAMERA_STATIC);
+const ivnCamerasDynamicPins = getIvnPins(ivnCamerasDynamic, Icon.Path.IVN_CAMERA_DYNAMIC);
+const ivnCamerasPins = [...ivnCamerasStaticPins, ...ivnCamerasDynamicPins];
 const ivnCamerasLayer = L.layerGroup(ivnCamerasPins);
 
-const ivnMunCamerasPins = getIvnPins(ivnMunCameras, Icon.Path.CLIENT);
+const ivnMunCamerasStaticPins = getIvnPins(ivnMunCamerasStatic, Icon.Path.IVN_CAMERA_STATIC);
+const ivnMunCamerasDynamicPins = getIvnPins(ivnMunCamerasDynamic, Icon.Path.IVN_CAMERA_DYNAMIC);
+const ivnMunCamerasPins = [...ivnMunCamerasStaticPins, ...ivnMunCamerasDynamicPins];
 const ivnMunCamerasLayer = L.layerGroup(ivnMunCamerasPins);
 
 const fiberLayerBackbone = getFiberLayer(backboneNet);
@@ -54,7 +64,7 @@ const overlayMaps = {
 const map = L.map(`map`, {
   center: MapSetting.CENTER,
   zoom: MapSetting.ZOOM,
-  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, ivnCamerasLayer],
+  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, ivnMunCamerasLayer, ivnMunBoxesLayer],
 });
 
 tileLayer.addTo(map);

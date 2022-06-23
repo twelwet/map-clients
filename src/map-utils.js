@@ -129,7 +129,7 @@ const getStrelkas = (data) => {
     strelkasWorked,
     strelkasDamaged,
   };
-}
+};
 const getFvfPlaces = (data) => data.filter((item) => item[`name`].startsWith(`Предлагаемое`));
 
 const getClients = (objects, isBuilt = `да`, isContracted = `да`) => objects
