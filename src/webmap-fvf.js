@@ -8,18 +8,18 @@ const {
   getFiberLayer,
   getNodesPins,
   getWholeDistance,
-  getPins,
+  getFvfPins,
 } = require(`./map-utils`);
 
-const {nodes, backboneNet, cityNet, jkhNet, fvfFutureLocations} = require(`../data`);
+const {nodes, backboneNet, cityNet, jkhNet, fvfData} = require(`../data`);
 
 mapIconsConfig();
 
 const nodesPins = getNodesPins(nodes);
 const nodesLayer = L.layerGroup(nodesPins);
 
-const fvfFutureLocationsPins = getPins(fvfFutureLocations, Icon.Path.CLIENT, false);
-const fvfFutureLocationsLayer = L.layerGroup(fvfFutureLocationsPins);
+const fvfPins = getFvfPins(fvfData, Icon.Path.CLIENT, false);
+const fvfLayer = L.layerGroup(fvfPins);
 
 const fiberLayerBackbone = getFiberLayer(backboneNet);
 const fiberLayerCityNet = getFiberLayer(cityNet);
@@ -36,13 +36,13 @@ const overlayMaps = {
   [`ВОЛС Магистраль, ${backboneDistance} км`]: fiberLayerBackbone,
   [`ВОЛС СПД города, ${cityNetDistance} км`]: fiberLayerCityNet,
   [`ВОЛС Дирекция ЖКХ, ${jkhNetDistance} км`]: fiberLayerJkhNet,
-  [`ФВФ Предполагаемые адреса МВД, ${fvfFutureLocationsPins.length} шт`]: fvfFutureLocationsLayer,
+  [`ФВФ, ${fvfPins.length} шт`]: fvfLayer,
 };
 
 const map = L.map(`map`, {
   center: MapSetting.CENTER,
   zoom: MapSetting.ZOOM,
-  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, fvfFutureLocationsLayer],
+  layers: [fiberLayerBackbone, fiberLayerCityNet, fiberLayerJkhNet, fvfLayer],
 });
 
 tileLayer.addTo(map);

@@ -8,7 +8,7 @@ const {
   getFiberLayer,
   getNodesPins,
   getWholeDistance,
-  getPins,
+  getIvnPins,
 } = require(`./map-utils`);
 
 const {nodes, backboneNet, cityNet, jkhNet, ivnBoxes, ivnMunBoxes, ivnCameras, ivnMunCameras} = require(`../data`);
@@ -18,16 +18,16 @@ mapIconsConfig();
 const nodesPins = getNodesPins(nodes);
 const nodesLayer = L.layerGroup(nodesPins);
 
-const ivnBoxesPins = getPins(ivnBoxes, Icon.Path.IVN_BOX, false);
+const ivnBoxesPins = getIvnPins(ivnBoxes, Icon.Path.IVN_BOX);
 const ivnBoxesLayer = L.layerGroup(ivnBoxesPins);
 
-const ivnMunBoxesPins = getPins(ivnMunBoxes, Icon.Path.IVN_BOX, false);
+const ivnMunBoxesPins = getIvnPins(ivnMunBoxes, Icon.Path.IVN_BOX);
 const ivnMunBoxesLayer = L.layerGroup(ivnMunBoxesPins);
 
-const ivnCamerasPins = getPins(ivnCameras, Icon.Path.CLIENT, false);
+const ivnCamerasPins = getIvnPins(ivnCameras, Icon.Path.CLIENT);
 const ivnCamerasLayer = L.layerGroup(ivnCamerasPins);
 
-const ivnMunCamerasPins = getPins(ivnMunCameras, Icon.Path.CLIENT, false);
+const ivnMunCamerasPins = getIvnPins(ivnMunCameras, Icon.Path.CLIENT);
 const ivnMunCamerasLayer = L.layerGroup(ivnMunCamerasPins);
 
 const fiberLayerBackbone = getFiberLayer(backboneNet);

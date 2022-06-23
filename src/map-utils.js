@@ -3,6 +3,13 @@
 const L = require(`leaflet`);
 const {MapSetting} = require(`./constants`);
 
+const getPinIcon = (iconPath) => L.icon({
+  iconUrl: iconPath,
+  iconSize: [30, 30],
+  iconAnchor: [15, 20],
+});
+
+
 const mapIconsConfig = () => {
   const {icon, Marker} = L;
   const iconRetinaUrl = `images/marker.svg`;
@@ -69,6 +76,45 @@ const getUniqueLocations = (data) => {
   return uniqueLocations;
 };
 
+const getClientsPins = (clients, iconPath, isMakeUniqueAddresses = true) => {
+  const pinIcon = getPinIcon(iconPath);
+
+  const clientsPins = [];
+  const data = isMakeUniqueAddresses ? getUniqueLocations(clients) : clients;
+  for (const location of data) {
+    clientsPins
+      .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
+        .bindPopup(`<b>${location[`address`]}:</b><br>${location[`clients`].map((item, i) => `${i + 1}. ${item}`).join(`<br> `)}`));
+  }
+  return clientsPins;
+};
+
+const getIvnPins = (ivnData, iconPath) => {
+  const pinIcon = getPinIcon(iconPath);
+
+  const ivnPins = [];
+  for (const location of ivnData) {
+    ivnPins
+      .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
+        .bindPopup(`<b>${location[`description`]}</b><br>${location[`address`]}<br>${location[`name`]}`));
+  }
+
+  return ivnPins;
+};
+
+const getFvfPins = (fvfData, iconPath) => {
+  const pinIcon = getPinIcon(iconPath);
+
+  const fvfPins = [];
+  for (const location of fvfData) {
+    fvfPins
+      .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
+        .bindPopup(`<b>${location[`model`]}</b><br>${location[`name`]}<br>${location[`address`]}<br>${location[`contractor`]}`));
+  }
+
+  return fvfPins;
+};
+
 const getClients = (objects, isBuilt = `да`, isContracted = `да`) => objects
   .filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted);
 
@@ -83,34 +129,6 @@ const getAllPlanningClients = (objects, isBuilt = `нет`, isContracted = `не
 
 const getPlan2022Clients = (objects) => objects
   .filter((item) => item[`plan_2022`] === `да`);
-
-const getPins = (filteredObjects, iconPath, isMakeUniqueAddresses = true) => {
-  // TODO divide into two functions: getPins and getUniqueLocations
-  const pinIcon = L.icon({
-    iconUrl: iconPath,
-    iconSize: [30, 30],
-    iconAnchor: [15, 20],
-  });
-  const pins = [];
-
-  if (isMakeUniqueAddresses) {
-    const uniqueLocations = getUniqueLocations(filteredObjects);
-
-    for (const location of uniqueLocations) {
-      pins
-        .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
-          .bindPopup(`<b>${location[`address`]}:</b><br>${location[`clients`].map((item, i) => `${i + 1}. ${item}`).join(`<br> `)}`));
-    }
-  } else {
-    for (const location of filteredObjects) {
-      pins
-        .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
-          .bindPopup(`<b>${location[`description`]}</b><br>${location[`address`]}<br>${location[`name`]}`));
-    }
-  }
-
-  return pins;
-};
 
 const getDistance = (item) => {
   const coordinates = item.feature.geometry.coordinates;
@@ -137,7 +155,9 @@ module.exports = {
   getTileLayer,
   getFiberLayer,
   getNodesPins,
-  getPins,
+  getClientsPins,
+  getIvnPins,
+  getFvfPins,
   getWholeDistance,
   getClients,
   getRemoteClients,

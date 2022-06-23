@@ -7,7 +7,7 @@ const {
   getTileLayer,
   getFiberLayer,
   getNodesPins,
-  getPins,
+  getClientsPins,
   getWholeDistance,
   getClients,
   getRemoteClients,
@@ -29,19 +29,19 @@ const unClients = getUnClients(objects);
 const allPlanningClients = getAllPlanningClients(objects, `нет`, `нет`, DISTANCE_LIMIT);
 const plan2022Clients = getPlan2022Clients(objects);
 
-const clientsPins = getPins(clients, Icon.Path.CLIENT);
+const clientsPins = getClientsPins(clients, Icon.Path.CLIENT);
 const clientsLayer = L.layerGroup(clientsPins);
 
-const remoteClientsPins = getPins(remoteClients, Icon.Path.REMOTE_CLIENT);
+const remoteClientsPins = getClientsPins(remoteClients, Icon.Path.REMOTE_CLIENT);
 const remoteClientsLayer = L.layerGroup(remoteClientsPins);
 
-const unClientsPins = getPins(unClients, Icon.Path.UN_CLIENT);
+const unClientsPins = getClientsPins(unClients, Icon.Path.UN_CLIENT);
 const unClientsLayer = L.layerGroup(unClientsPins);
 
-const allPlanningClientsPins = getPins(allPlanningClients, Icon.Path.PLAN_TO_BUILD);
+const allPlanningClientsPins = getClientsPins(allPlanningClients, Icon.Path.PLAN_TO_BUILD);
 const allPlanningClientsLayer = L.layerGroup(allPlanningClientsPins);
 
-const plan2022ClientsPins = getPins(plan2022Clients, Icon.Path.PLAN_2022);
+const plan2022ClientsPins = getClientsPins(plan2022Clients, Icon.Path.PLAN_2022);
 const plan2022ClientsLayer = L.layerGroup(plan2022ClientsPins);
 
 const fiberLayerBackbone = getFiberLayer(backboneNet);
