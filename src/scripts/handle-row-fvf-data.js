@@ -1,18 +1,21 @@
 'use strict';
 
-const {rawFvfFutureLocationsData} = require(`../../data`);
+const fvfData = require(`../../data/raw/fvf-current.json`);
 const {saveToFile, getCsvFromJson} = require(`../utils`);
-const {FilePath} = require(`../constants`);
+const {FVF_FIELDS} = require(`../constants`);
 
-const DEFAULT_FIELDS = [`node_id`, `name`, `address`, `description`, `latitude`, `longitude`, `node_distance`, `cost`];
-
-const rawData = rawFvfFutureLocationsData[`features`];
+const rawData = fvfData[`features`];
 
 const mapToFormat = (data) => {
   return data.map((item) => ({
     [`node_id`]: `?`,
-    name: item.properties.description || `Unknown`,
-    address: ``,
+    [`object_type`]: ``,
+    contractor: ``,
+    name: item.properties.iconCaption ? item.properties.iconCaption : `Unknown`,
+    [`is_work`]: true,
+    model: ``,
+    vendor: ``,
+    address: item.properties.description || `Unknown`,
     description: ``,
     latitude: item.geometry.coordinates[1],
     longitude: item.geometry.coordinates[0],
@@ -24,5 +27,5 @@ const mapToFormat = (data) => {
 const data = mapToFormat(rawData);
 
 
-saveToFile(FilePath.FvfFutureLocations.CSV, getCsvFromJson(data, DEFAULT_FIELDS))
+saveToFile(`data/csv/fvf-data.csv`, getCsvFromJson(data, FVF_FIELDS))
   .then(() => console.log(`Operation is successful.`));
