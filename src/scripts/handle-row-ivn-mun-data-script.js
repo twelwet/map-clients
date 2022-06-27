@@ -27,11 +27,11 @@ const mapToFormat = (data) => {
 
 const cameras = mapToFormat(rawCameras);
 
-for (const item of cameras) {
-  item[`name`].includes(`С`)
-    ? item[`description`] = `Стационарная камера`
-    : item[`description`] = `Поворотная камера`;
-}
+// for (const item of cameras) {
+//   item[`name`].includes(`С`)
+//     ? item[`description`] = `Стационарная камера`
+//     : item[`description`] = `Поворотная камера`;
+// }
 
 const boxes = mapToFormat(rawBoxes);
 
