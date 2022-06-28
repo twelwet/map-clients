@@ -1,8 +1,36 @@
 extends layout
 
 block content
+  - var totalMun = (data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000;
+  - var hardwareResp = 6210;
+  - var fiberResp = 11540;
+  - var lastInchesResp = 7250;
+  - var totalResp = hardwareResp + fiberResp + lastInchesResp;
+  h5
+    b= `Затраты на подключение ИВН`
+  table(class=`table table-light`)
+    tr
+      th #
+      th Наименование
+      th Стоимость, тыс. руб.
+    tr
+      td 1
+      td Подключение муниципального сегмента ИВН
+      td(class=`text-end`)= totalMun.toFixed(2)
+    tr
+      td 2
+      td Подключение республиканского сегмента ИВН
+      td(class=`text-end`)= totalResp.toFixed(2)
+    tr
+      td
+        b -
+      td
+        b ИТОГО
+      td(class=`text-end`)
+        b= (totalMun + totalResp).toFixed(2)
+
   h6
-    b= `Затраты на подключение муниципального сегмента ИВН: ${((data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000).toFixed(2)} тыс. руб.`
+    b= `Подключение муниципального сегмента`
   table(class=`table table-light`)
     tr
       th #
@@ -27,5 +55,31 @@ block content
       td(class=`text-end`)
         b= (data[`munCostData`][`total`][`hardware`] / 1000).toFixed(2)
       td(class=`text-end`)
-        b= ((data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000).toFixed(2)
+        b= totalMun.toFixed(2)
+  h6
+    b= `Подключение республиканского сегмента`
+  table(class=`table table-light`)
+    tr
+      th #
+      th Наименование
+      th Стоимость, тыс. руб.
+    tr
+      td 1
+      td Закупка и монтаж ТКШ (135 шт)
+      td(class=`text-end`)= hardwareResp.toFixed(2)
+    tr
+      td 2
+      td Строительство ВОЛС (46 км)
+      td(class=`text-end`)= fiberResp.toFixed(2)
+    tr
+      td 1
+      td Строительство “последних дюймов” (414 шт)
+      td(class=`text-end`)= lastInchesResp.toFixed(2)
+    tr
+      td
+        b -
+      td
+        b ИТОГО
+      td(class=`text-end`)
+        b= totalResp.toFixed(2)
 
