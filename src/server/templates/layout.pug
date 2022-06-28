@@ -16,7 +16,7 @@ html
             else
               a(href=`${item[`link`]}`)= item[`menuName`]
     .d-flex.flex-row.align-items-stretch
-      div.p-2
-        block content
       div#map.p-2
+      div.p-2.overflow-auto.info-container
+        block content
     script(src= mapScript)
