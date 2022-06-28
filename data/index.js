@@ -26,7 +26,6 @@ const backboneNet = {
 };
 
 const ivnMunCost = getTotal(getCountable(rawIvnMunCost, [`fiber`, `hardware`]), [`fiber`, `hardware`]);
-console.log(ivnMunCost)
 
 module.exports = {
   nodes,
