@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h6
+    b= `Затраты на подключение муниципального сегмента ИВН: ${((data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000).toFixed(2)} тыс. руб.`
+  table(class=`table table-light`)
+    tr
+      th #
+      th Наименование
+      th ВОЛС, тыс. руб.
+      th ТКШ, тыс. руб.
+      th Итого, тыс. руб.
+    each item, index in data[`munCostData`]
+      tr
+        td= index + 1
+        td= item[`name`]
+        td(class=`text-end`)= (item[`fiber`] / 1000).toFixed(2)
+        td(class=`text-end`)= (item[`hardware`] / 1000).toFixed(2)
+        td(class=`text-end`)= ((item[`fiber`] + item[`hardware`]) / 1000).toFixed(2)
+    tr
+      td
+        b -
+      td
+        b ИТОГО
+      td(class=`text-end`)
+        b= (data[`munCostData`][`total`][`fiber`] / 1000).toFixed(2)
+      td(class=`text-end`)
+        b= (data[`munCostData`][`total`][`hardware`] / 1000).toFixed(2)
+      td(class=`text-end`)
+        b= ((data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000).toFixed(2)
+

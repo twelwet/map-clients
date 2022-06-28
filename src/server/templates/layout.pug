@@ -6,14 +6,17 @@ html
     link(rel='stylesheet', href='css/leaflet.css')
     link(rel='stylesheet', href='css/bootstrap.css')
     title= title
-  header
-    ul
-      each item in headerMenu
-        li(class='list-inline-item')
-          if item[`isActive`]
-            a= item[`menuName`]
-          else
-            a(href=`${item[`link`]}`)= item[`menuName`]
   body
-    #map
+    header
+      ul
+        each item in headerMenu
+          li(class='list-inline-item')
+            if item[`isActive`]
+              a= item[`menuName`]
+            else
+              a(href=`${item[`link`]}`)= item[`menuName`]
+    .d-flex.flex-row.align-items-stretch
+      div.p-2
+        block content
+      div#map.p-2
     script(src= mapScript)

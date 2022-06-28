@@ -37,6 +37,10 @@ const FilePath = {
     CSV: `data/csv/ivn-mun-cameras.csv`,
     JSON: `data/json/ivn-mun-cameras.json`,
   },
+  IvnMunCost: {
+    CSV: `data/csv/ivn-mun-cost.csv`,
+    JSON: `data/json/ivn-mun-cost.json`,
+  },
   Fvf: {
     CSV: `data/csv/fvf.csv`,
     JSON: `data/json/fvf.json`,

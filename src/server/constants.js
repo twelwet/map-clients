@@ -1,10 +1,19 @@
 'use strict';
 
+const {ivnMunCost} = require(`../../data`);
+
 const Title = {
   BACKBONE: `Магистраль`,
   CLIENTS: `Клиенты`,
   IVN: `ИВН`,
   FVF: `ФВФ`,
+};
+
+const PageName = {
+  BACKBONE: `main`,
+  CLIENTS: `clients`,
+  IVN: `ivn`,
+  FVF: `fvf`,
 };
 
 const MapScript = {
@@ -26,6 +35,8 @@ const backbone = {
   mapScript: MapScript.BACKBONE,
   link: Link.BACKBONE,
   menuName: Title.BACKBONE,
+  pageName: PageName.BACKBONE,
+  data: {},
 };
 
 const clients = {
@@ -33,6 +44,8 @@ const clients = {
   mapScript: MapScript.CLIENTS,
   link: Link.CLIENTS,
   menuName: Title.CLIENTS,
+  pageName: PageName.CLIENTS,
+  data: {},
 };
 
 const ivn = {
@@ -40,6 +53,10 @@ const ivn = {
   mapScript: MapScript.IVN,
   link: Link.IVN,
   menuName: Title.IVN,
+  pageName: PageName.IVN,
+  data: {
+    munCostData: ivnMunCost,
+  },
 };
 
 const fvf = {
@@ -47,6 +64,8 @@ const fvf = {
   mapScript: MapScript.FVF,
   link: Link.FVF,
   menuName: Title.FVF,
+  pageName: PageName.FVF,
+  data: {},
 };
 
 const pages = [backbone, clients, ivn, fvf];

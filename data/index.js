@@ -1,5 +1,7 @@
 'use strict';
 
+const {getCountable} = require(`./utils`);
+
 const nodes = require(`./json/nodes.json`);
 const objects = require(`./json/objects.json`);
 const backboneNetRaw = require(`./json/fiber-lines-backbone.json`);
@@ -12,6 +14,8 @@ const ivnMunCameras = require(`./json/ivn-mun-cameras.json`);
 const fvfData = require(`./json/fvf.json`);
 const rawIvnData = require(`./raw/ivn.json`);
 const rawIvnMunData = require(`./raw/ivn-mun.json`);
+const rawIvnMunCost = require(`./json/ivn-mun-cost.json`);
+const {getTotal} = require('./utils');
 
 const backboneNetLineStrings = backboneNetRaw[`features`].filter((item) => item[`geometry`][`type`] === `LineString`);
 
@@ -20,6 +24,9 @@ const backboneNet = {
   metadata: backboneNetRaw[`metadata`],
   features: backboneNetLineStrings,
 };
+
+const ivnMunCost = getTotal(getCountable(rawIvnMunCost, [`fiber`, `hardware`]), [`fiber`, `hardware`]);
+console.log(ivnMunCost)
 
 module.exports = {
   nodes,
@@ -33,5 +40,6 @@ module.exports = {
   ivnMunBoxes,
   ivnCameras,
   ivnMunCameras,
+  ivnMunCost,
   fvfData,
 };

@@ -26,8 +26,9 @@ for (const page of pages) {
       title: page[`title`],
       mapScript: page[`mapScript`],
       headerMenu: getHeaderMenu(page[`menuName`], pages),
+      data: page[`data`],
     };
-    res.render(`layout`, pageContent);
+    res.render(`${page[`pageName`]}`, pageContent);
   });
 }
 
