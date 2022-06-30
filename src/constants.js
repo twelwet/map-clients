@@ -63,6 +63,7 @@ const Icon = {
     STRELKA: `images/strelka.svg`,
     STRELKA_DAMAGED: `images/strelka-damaged.svg`,
     FVF_PLACES: `images/fvf-places.svg`,
+    FVF_CHECKED_PLACES: `images/star-blue.svg`,
     IVN_CAMERA_STATIC: `images/camera-static.svg`,
     IVN_CAMERA_DYNAMIC: `images/camera-dynamic.svg`,
   },

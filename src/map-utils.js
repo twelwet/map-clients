@@ -109,7 +109,7 @@ const getFvfPins = (fvfData, iconPath) => {
   for (const location of fvfData) {
     fvfPins
       .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
-        .bindPopup(`<b>${location[`model`]}</b><br>${location[`name`]}<br>${location[`description`]}<br>${location[`address`]}<br>${location[`contractor`]}`));
+        .bindPopup(`<b>${location[`model`]}</b><br>${location[`name`]}<br>${location[`description`]}<br>Тип дороги: "${location[`road_type`]}"<br>${location[`address`]}<br>${location[`contractor`]}`));
   }
 
   return fvfPins;
@@ -131,6 +131,8 @@ const getStrelkas = (data) => {
   };
 };
 const getFvfPlaces = (data) => data.filter((item) => item[`name`].startsWith(`Предлагаемое`));
+
+const getFvfCheckedPlaces = (data) => data.filter((item) => item[`is_checked`]);
 
 const getClients = (objects, isBuilt = `да`, isContracted = `да`) => objects
   .filter((item) => item[`is_built`] === isBuilt && item[`is_contracted`] === isContracted);
@@ -188,4 +190,5 @@ module.exports = {
   getRadars,
   getStrelkas,
   getFvfPlaces,
+  getFvfCheckedPlaces,
 };

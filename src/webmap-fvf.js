@@ -16,6 +16,7 @@ const {
   getRadars,
   getStrelkas,
   getFvfPlaces,
+  getFvfCheckedPlaces,
 } = require(`./map-utils`);
 
 const {nodes, backboneNet, cityNet, jkhNet, fvfData} = require(`../data`);
@@ -29,6 +30,7 @@ const perekrestoks = getPerekrestoks(fvfData);
 const radars = getRadars(fvfData);
 const {strelkasWorked, strelkasDamaged} = getStrelkas(fvfData);
 const places = getFvfPlaces(fvfData);
+const checkedPlaces = getFvfCheckedPlaces(fvfData);
 
 const nodesPins = getNodesPins(nodes);
 const nodesLayer = L.layerGroup(nodesPins);
@@ -56,6 +58,9 @@ const strelkasLayer = L.layerGroup(strelkasPins);
 const placesPins = getFvfPins(places, Icon.Path.FVF_PLACES);
 const placesLayer = L.layerGroup(placesPins);
 
+const checkedPlacesPins = getFvfPins(checkedPlaces, Icon.Path.FVF_CHECKED_PLACES);
+const checkedPlacesLayer = L.layerGroup(checkedPlacesPins);
+
 const fiberLayerBackbone = getFiberLayer(backboneNet);
 const fiberLayerCityNet = getFiberLayer(cityNet);
 const fiberLayerJkhNet = getFiberLayer(jkhNet);
@@ -78,6 +83,7 @@ const overlayMaps = {
   [`ФВФ Радары, ${radarsPins.length} шт`]: radarsLayer,
   [`ФВФ Стрелки, ${strelkasPins.length} шт`]: strelkasLayer,
   [`ФВФ места МВД, ${placesPins.length} шт`]: placesLayer,
+  [`ФВФ выбранные места, ${checkedPlacesPins.length} шт`]: checkedPlacesLayer,
 };
 
 const map = L.map(`map`, {
@@ -93,7 +99,8 @@ const map = L.map(`map`, {
     perekrestoksLayer,
     radarsLayer,
     strelkasLayer,
-    placesLayer,
+    // placesLayer,
+    checkedPlacesLayer,
   ],
 });
 
