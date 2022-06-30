@@ -7,6 +7,7 @@ const Title = {
   CLIENTS: `Клиенты`,
   IVN: `ИВН`,
   FVF: `ФВФ`,
+  TRAFFIC_LIGHTS: `Светофоры`,
 };
 
 const PageName = {
@@ -14,6 +15,7 @@ const PageName = {
   CLIENTS: `clients`,
   IVN: `ivn`,
   FVF: `fvf`,
+  TRAFFIC_LIGHTS: `traffic_lights`,
 };
 
 const MapScript = {
@@ -21,6 +23,7 @@ const MapScript = {
   CLIENTS: `js/webmap-clients.js`,
   IVN: `js/webmap-ivn.js`,
   FVF: `js/webmap-fvf.js`,
+  TRAFFIC_LIGHTS: `js/webmap-traffic-lights.js`,
 };
 
 const Link = {
@@ -28,6 +31,7 @@ const Link = {
   CLIENTS: `/clients`,
   IVN: `/ivn`,
   FVF: `/fvf`,
+  TRAFFIC_LIGHTS: `/traffic_lights`,
 };
 
 const backbone = {
@@ -68,6 +72,15 @@ const fvf = {
   data: {},
 };
 
-const pages = [backbone, clients, ivn, fvf];
+const trafficLights = {
+  title: Title.TRAFFIC_LIGHTS,
+  mapScript: MapScript.TRAFFIC_LIGHTS,
+  link: Link.TRAFFIC_LIGHTS,
+  menuName: Title.TRAFFIC_LIGHTS,
+  pageName: PageName.TRAFFIC_LIGHTS,
+  data: {},
+};
+
+const pages = [backbone, clients, ivn, fvf, trafficLights];
 
 module.exports = {pages};

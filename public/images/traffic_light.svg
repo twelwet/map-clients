@@ -1,0 +1,13 @@
+<svg width="100.00000000000001" height="100.00000000000001" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_1" y="300" x="391.99609" stroke-width="0" stroke="#000" fill="#000000"/>
+  <path fill="#00ff00" stroke="#000" stroke-width="0" opacity="NaN" d="m-16.28258,19.6143l-6.53758,-4.10172" id="svg_14"/>
+  <path fill="#00ff00" stroke="#000" stroke-width="0" opacity="NaN" d="m18.20407,24.74243" id="svg_15"/>
+  <rect stroke="#000" id="svg_17" height="94.44475" width="49.86127" y="2.91684" x="25.97215" stroke-width="5" fill="#999999"/>
+  <ellipse stroke-width="3" ry="14.5" rx="14.5" id="svg_19" cy="21.02772" cx="51.00006" stroke="#000" fill="#ff0000"/>
+  <ellipse stroke-width="3" ry="14.5" rx="14.5" id="svg_20" cy="80.77793" cx="51.02772" stroke="#000" fill="#00ff00"/>
+  <ellipse stroke-width="3" ry="14.5" rx="14.5" id="svg_21" cy="51.11104" cx="51.02777" stroke="#000" fill="#ffff00"/>
+ </g>
+
+</svg>

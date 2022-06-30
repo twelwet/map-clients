@@ -115,6 +115,19 @@ const getFvfPins = (fvfData, iconPath) => {
   return fvfPins;
 };
 
+const getTrafficLightsPins = (data, iconPath) => {
+  const pinIcon = getPinIcon(iconPath);
+
+  const pins = [];
+  for (const location of data) {
+    pins
+      .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
+        .bindPopup(`<b>${location[`id`]}</b><br>${location[`address`]}`));
+  }
+
+  return pins;
+};
+
 const getVokords = (data) => data.filter((item) => item[`model`].startsWith(`Вокорд`));
 const getPotoks = (data) => data.filter((item) => item[`model`].startsWith(`Поток`));
 const getForsazhs = (data) => data.filter((item) => item[`model`].startsWith(`Форсаж`));
@@ -130,6 +143,7 @@ const getStrelkas = (data) => {
     strelkasDamaged,
   };
 };
+
 const getFvfPlaces = (data) => data.filter((item) => item[`name`].startsWith(`Предлагаемое`));
 
 const getFvfCheckedPlaces = (data) => data.filter((item) => item[`is_checked`]);
@@ -191,4 +205,5 @@ module.exports = {
   getStrelkas,
   getFvfPlaces,
   getFvfCheckedPlaces,
+  getTrafficLightsPins,
 };

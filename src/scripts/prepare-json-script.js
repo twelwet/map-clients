@@ -16,3 +16,4 @@ prepareJson(FilePath.IvnCameras.CSV, FilePath.IvnCameras.JSON);
 prepareJson(FilePath.IvnMunCameras.CSV, FilePath.IvnMunCameras.JSON);
 prepareJson(FilePath.Fvf.CSV, FilePath.Fvf.JSON);
 prepareJson(FilePath.IvnMunCost.CSV, FilePath.IvnMunCost.JSON);
+prepareJson(FilePath.TrafficLights.CSV, FilePath.TrafficLights.JSON);

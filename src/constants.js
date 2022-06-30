@@ -45,6 +45,10 @@ const FilePath = {
     CSV: `data/csv/fvf.csv`,
     JSON: `data/json/fvf.json`,
   },
+  TrafficLights: {
+    CSV: `data/csv/traffic_lights.csv`,
+    JSON: `data/json/traffic_lights.json`,
+  },
 };
 
 const Icon = {
@@ -66,6 +70,7 @@ const Icon = {
     FVF_CHECKED_PLACES: `images/star-blue.svg`,
     IVN_CAMERA_STATIC: `images/camera-static.svg`,
     IVN_CAMERA_DYNAMIC: `images/camera-dynamic.svg`,
+    TRAFFIC_LIGHT: `images/traffic_light.svg`,
   },
 };
 

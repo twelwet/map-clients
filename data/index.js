@@ -15,6 +15,7 @@ const fvfData = require(`./json/fvf.json`);
 const rawIvnData = require(`./raw/ivn.json`);
 const rawIvnMunData = require(`./raw/ivn-mun.json`);
 const rawIvnMunCost = require(`./json/ivn-mun-cost.json`);
+const trafficLightsData = require(`./json/traffic_lights.json`);
 const {getTotal} = require('./utils');
 
 const backboneNetLineStrings = backboneNetRaw[`features`].filter((item) => item[`geometry`][`type`] === `LineString`);
@@ -41,4 +42,5 @@ module.exports = {
   ivnMunCameras,
   ivnMunCost,
   fvfData,
+  trafficLightsData,
 };
