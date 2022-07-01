@@ -1,7 +1,7 @@
 'use strict';
 
 const L = require(`leaflet`);
-const {Icon, DISTANCE_LIMIT} = require(`../../constants`);
+const {Icon, DISTANCE_LIMIT} = require(`../constants`);
 const {
   getClients,
   getRemoteClients,
@@ -9,7 +9,7 @@ const {
   getAllPlanningClients,
   getPlan2022Clients,
   getClientsPins,
-} = require(`../../map-utils`);
+} = require(`./utils`);
 
 const {objects} = require(`../../../data`);
 

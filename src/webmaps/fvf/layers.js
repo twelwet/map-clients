@@ -1,7 +1,7 @@
 'use strict';
 
 const L = require(`leaflet`);
-const {Icon} = require(`../../constants`);
+const {Icon} = require(`../constants`);
 const {fvfData} = require(`../../../data`);
 
 const {
@@ -14,7 +14,7 @@ const {
   getFvfPlaces,
   getFvfCheckedPlaces,
   getFvfPins,
-} = require(`../../map-utils`);
+} = require(`./utils`);
 
 const vokords = getVokords(fvfData);
 const potoks = getPotoks(fvfData);

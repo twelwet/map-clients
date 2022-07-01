@@ -1,10 +1,10 @@
 'use strict';
 
 const L = require(`leaflet`);
-const {Icon} = require(`../../constants`);
+const {Icon} = require(`../constants`);
 const {ivnBoxes, ivnMunBoxes, ivnCameras, ivnMunCameras} = require(`../../../data`);
 
-const {getIvnPins} = require(`../../map-utils`);
+const {getIvnPins} = require(`./utils`);
 
 const ivnCamerasStatic = ivnCameras.filter((item) => item[`description`].includes(`Стационарная`));
 const ivnCamerasDynamic = ivnCameras.filter((item) => item[`description`].includes(`Поворотная`));

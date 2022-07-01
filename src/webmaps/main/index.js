@@ -1,8 +1,8 @@
 'use strict';
 
 const L = require(`leaflet`);
-const {MapSetting} = require(`../../constants`);
-const {mapIconsConfig} = require(`../../map-utils`);
+const {MapSetting} = require(`../constants`);
+const {mapIconsConfig} = require(`../map-utils`);
 const {tileLayer, nodes, backbone, cityNet, jkhNet} = require(`./layers`);
 
 mapIconsConfig();

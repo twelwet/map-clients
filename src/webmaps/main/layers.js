@@ -1,12 +1,12 @@
 'use strict';
 
 const L = require(`leaflet`);
+const {getTileLayer} = require(`../map-utils`);
 const {
-  getTileLayer,
   getFiberLayer,
   getNodesPins,
   getWholeDistance,
-} = require(`../../map-utils`);
+} = require(`./utils`);
 
 const {nodes, backboneNet, cityNet, jkhNet} = require(`../../../data`);
 

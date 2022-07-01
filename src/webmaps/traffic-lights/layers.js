@@ -1,10 +1,10 @@
 'use strict';
 
 const L = require(`leaflet`);
-const {Icon} = require(`../../constants`);
+const {Icon} = require(`../constants`);
 const {trafficLightsData} = require(`../../../data`);
 
-const {getTrafficLightsPins} = require(`../../map-utils`);
+const {getTrafficLightsPins} = require(`./utils`);
 
 const trafficLightsPins = getTrafficLightsPins(trafficLightsData, Icon.Path.TRAFFIC_LIGHT);
 const trafficLightsLayer = L.layerGroup(trafficLightsPins);
