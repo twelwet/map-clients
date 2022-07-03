@@ -14203,6 +14203,7 @@ const Icon = {
     FVF_CHECKED_PLACES: `images/star-blue.svg`,
     IVN_CAMERA_STATIC: `images/camera-static.svg`,
     IVN_CAMERA_DYNAMIC: `images/camera-dynamic.svg`,
+    IVN_CAMERA_BIOMETRIC: `images/camera-biometric.svg`,
     TRAFFIC_LIGHT: `images/traffic_light.svg`,
   },
 };

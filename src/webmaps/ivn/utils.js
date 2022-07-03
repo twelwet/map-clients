@@ -16,6 +16,13 @@ const getIvnPins = (ivnData, iconPath) => {
   return ivnPins;
 };
 
+const getCameras = {
+  static: (data) => data.filter((item) => item[`type`] === `camera-static`),
+  dynamic: (data) => data.filter((item) => item[`type`] === `camera-dynamic`),
+  biometric: (data) => data.filter((item) => item[`type`] === `camera-biometric`),
+};
+
 module.exports = {
   getIvnPins,
+  getCameras,
 };

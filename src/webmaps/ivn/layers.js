@@ -4,13 +4,15 @@ const L = require(`leaflet`);
 const {Icon} = require(`../constants`);
 const {ivnBoxes, ivnMunBoxes, ivnCameras, ivnMunCameras} = require(`../../../data`);
 
-const {getIvnPins} = require(`./utils`);
+const {getIvnPins, getCameras} = require(`./utils`);
 
-const ivnCamerasStatic = ivnCameras.filter((item) => item[`description`].includes(`Стационарная`));
-const ivnCamerasDynamic = ivnCameras.filter((item) => item[`description`].includes(`Поворотная`));
+const ivnCamerasStatic = getCameras.static(ivnCameras);
+const ivnCamerasDynamic = getCameras.dynamic(ivnCameras);
+const ivnCamerasBiometric = getCameras.biometric(ivnCameras);
 
-const ivnMunCamerasStatic = ivnMunCameras.filter((item) => item[`description`].includes(`Стационарная`));
-const ivnMunCamerasDynamic = ivnMunCameras.filter((item) => item[`description`].includes(`Поворотная`));
+const ivnMunCamerasStatic = getCameras.static(ivnMunCameras);
+const ivnMunCamerasDynamic = getCameras.dynamic(ivnMunCameras);
+const ivnMunCamerasBiometric = getCameras.biometric(ivnMunCameras);
 
 const ivnBoxesPins = getIvnPins(ivnBoxes, Icon.Path.IVN_BOX);
 const ivnBoxesLayer = L.layerGroup(ivnBoxesPins);
@@ -20,12 +22,14 @@ const ivnMunBoxesLayer = L.layerGroup(ivnMunBoxesPins);
 
 const ivnCamerasStaticPins = getIvnPins(ivnCamerasStatic, Icon.Path.IVN_CAMERA_STATIC);
 const ivnCamerasDynamicPins = getIvnPins(ivnCamerasDynamic, Icon.Path.IVN_CAMERA_DYNAMIC);
-const ivnCamerasPins = [...ivnCamerasStaticPins, ...ivnCamerasDynamicPins];
+const ivnCamerasBiometricPins = getIvnPins(ivnCamerasBiometric, Icon.Path.IVN_CAMERA_BIOMETRIC);
+const ivnCamerasPins = [...ivnCamerasStaticPins, ...ivnCamerasDynamicPins, ...ivnCamerasBiometricPins];
 const ivnCamerasLayer = L.layerGroup(ivnCamerasPins);
 
 const ivnMunCamerasStaticPins = getIvnPins(ivnMunCamerasStatic, Icon.Path.IVN_CAMERA_STATIC);
 const ivnMunCamerasDynamicPins = getIvnPins(ivnMunCamerasDynamic, Icon.Path.IVN_CAMERA_DYNAMIC);
-const ivnMunCamerasPins = [...ivnMunCamerasStaticPins, ...ivnMunCamerasDynamicPins];
+const ivnMunCamerasBiometricPins = getIvnPins(ivnMunCamerasBiometric, Icon.Path.IVN_CAMERA_BIOMETRIC);
+const ivnMunCamerasPins = [...ivnMunCamerasStaticPins, ...ivnMunCamerasDynamicPins, ...ivnMunCamerasBiometricPins];
 const ivnMunCamerasLayer = L.layerGroup(ivnMunCamerasPins);
 
 module.exports = {
