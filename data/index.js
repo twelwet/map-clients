@@ -1,6 +1,6 @@
 'use strict';
 
-const {getCountable} = require(`./utils`);
+const {getCountable, getTotal, getDataByOwner, getBoxes, getCameras, getTrafficLightsData} = require(`./utils`);
 
 const nodes = require(`./json/nodes.json`);
 const objects = require(`./json/objects.json`);
@@ -12,8 +12,7 @@ const ivnData = require(`./json/ivn.json`);
 const rawIvnData = require(`./raw/ivn.json`);
 const rawIvnMunData = require(`./raw/ivn-mun.json`);
 const rawIvnMunCost = require(`./json/ivn-mun-cost.json`);
-const trafficLightsData = require(`./json/traffic_lights.json`);
-const {getTotal, getDataByOwner, getBoxes, getCameras} = require('./utils');
+const trafficLightsRawData = require(`./json/traffic_lights.json`);
 
 const backboneNetLineStrings = backboneNetRaw[`features`].filter((item) => item[`geometry`][`type`] === `LineString`);
 
@@ -33,6 +32,8 @@ const ivnCameras = getCameras(ivnRmData);
 
 const ivnMunBoxes = getBoxes(ivnMunData);
 const ivnMunCameras = getCameras(ivnMunData);
+
+const trafficLightsData = getTrafficLightsData(getCountable(trafficLightsRawData, [`fiber`, `last_inch`, `hardware`, `vl-100`, `vl-1000`]));
 
 module.exports = {
   nodes,

@@ -24,4 +24,14 @@ const getDataByOwner = (data, ownerName) => data.filter((item) => item[`owner`] 
 const getBoxes = (data) => data.filter((item) => item[`type`] === `telecom-unit`);
 const getCameras = (data) => data.filter((item) => item[`type`] !== `telecom-unit`);
 
-module.exports = {getCountable, getTotal, getDataByOwner, getBoxes, getCameras};
+const getTrafficLightsData = (data) => {
+  const result = [];
+  for (const item of data) {
+    item[`installation`] = item[`fiber`] + item[`last_inch`] + item[`hardware`];
+    item[`subscription`] = item[`vl-100`] + item[`vl-1000`];
+    result.push(item);
+  }
+  return result;
+};
+
+module.exports = {getCountable, getTotal, getDataByOwner, getBoxes, getCameras, getTrafficLightsData};

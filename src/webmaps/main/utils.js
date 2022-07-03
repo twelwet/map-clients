@@ -34,7 +34,7 @@ const getFiberLayer = (fiberLines) => L.geoJSON(fiberLines, {
 const getNodesPins = (nodes) => {
   const nodesPins = [];
   for (const node of nodes) {
-    nodesPins.push(L.marker([node[`latitude`], node[`longitude`]]).bindPopup(`${node[`node_id`]} "${node[`name`]}" ${node[`address`]}`));
+    nodesPins.push(L.marker([node[`latitude`], node[`longitude`]]).bindPopup(`${node[`id`]} "${node[`name`]}" ${node[`address`]}`));
   }
   return nodesPins;
 };
