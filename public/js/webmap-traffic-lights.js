@@ -14,7 +14,7 @@ const rawIvnData = require(`./raw/ivn.json`);
 const rawIvnMunData = require(`./raw/ivn-mun.json`);
 const rawIvnMunCost = require(`./json/ivn-mun-cost.json`);
 const trafficLightsData = require(`./json/traffic_lights.json`);
-const {getTotal} = require('./utils');
+const {getTotal, getDataByOwner, getBoxes, getCameras} = require('./utils');
 
 const backboneNetLineStrings = backboneNetRaw[`features`].filter((item) => item[`geometry`][`type`] === `LineString`);
 
@@ -26,14 +26,14 @@ const backboneNet = {
 
 const ivnMunCost = getTotal(getCountable(rawIvnMunCost, [`fiber`, `hardware`]), [`fiber`, `hardware`]);
 
-const ivnRmData = ivnData.filter((item) => item[`owner`] === `rm`);
-const ivnMunData = ivnData.filter((item) => item[`owner`] === `city`);
+const ivnRmData = getDataByOwner(ivnData, `rm`);
+const ivnMunData = getDataByOwner(ivnData, `city`);
 
-const ivnBoxes = ivnRmData.filter((item) => item[`type`] === `telecom-unit`);
-const ivnCameras = ivnRmData.filter((item) => item[`type`] !== `telecom-unit`);
+const ivnBoxes = getBoxes(ivnRmData);
+const ivnCameras = getCameras(ivnRmData);
 
-const ivnMunBoxes = ivnMunData.filter((item) => item[`type`] === `telecom-unit`);
-const ivnMunCameras = ivnMunData.filter((item) => item[`type`] !== `telecom-unit`);
+const ivnMunBoxes = getBoxes(ivnMunData);
+const ivnMunCameras = getCameras(ivnMunData);
 
 module.exports = {
   nodes,
@@ -99,7 +99,11 @@ const getTotal = (data, fields) => {
   return data;
 };
 
-module.exports = {getCountable, getTotal};
+const getDataByOwner = (data, ownerName) => data.filter((item) => item[`owner`] === ownerName);
+const getBoxes = (data) => data.filter((item) => item[`type`] === `telecom-unit`);
+const getCameras = (data) => data.filter((item) => item[`type`] !== `telecom-unit`);
+
+module.exports = {getCountable, getTotal, getDataByOwner, getBoxes, getCameras};
 
 },{}],14:[function(require,module,exports){
 /* @preserve

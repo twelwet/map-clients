@@ -20,4 +20,8 @@ const getTotal = (data, fields) => {
   return data;
 };
 
-module.exports = {getCountable, getTotal};
+const getDataByOwner = (data, ownerName) => data.filter((item) => item[`owner`] === ownerName);
+const getBoxes = (data) => data.filter((item) => item[`type`] === `telecom-unit`);
+const getCameras = (data) => data.filter((item) => item[`type`] !== `telecom-unit`);
+
+module.exports = {getCountable, getTotal, getDataByOwner, getBoxes, getCameras};
