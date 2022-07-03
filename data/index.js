@@ -33,7 +33,7 @@ const ivnCameras = getCameras(ivnRmData);
 const ivnMunBoxes = getBoxes(ivnMunData);
 const ivnMunCameras = getCameras(ivnMunData);
 
-const trafficLightsData = getTrafficLightsData(getCountable(trafficLightsRawData, [`fiber`, `last_inch`, `hardware`, `vl-100`, `vl-1000`]));
+const trafficLightsData = getTotal(getTrafficLightsData(getCountable(trafficLightsRawData, [`fiber`, `last_inch`, `hardware`, `vl-100`, `vl-1000`])), [`installation`, `subscription`]);
 
 module.exports = {
   nodes,

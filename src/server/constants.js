@@ -1,6 +1,6 @@
 'use strict';
 
-const {ivnMunCost} = require(`../../data`);
+const {ivnMunCost, trafficLightsData} = require(`../../data`);
 
 const Title = {
   BACKBONE: `Магистраль`,
@@ -78,7 +78,9 @@ const trafficLights = {
   link: Link.TRAFFIC_LIGHTS,
   menuName: Title.TRAFFIC_LIGHTS,
   pageName: PageName.TRAFFIC_LIGHTS,
-  data: {},
+  data: {
+    trafficLightsData,
+  },
 };
 
 const pages = [backbone, clients, ivn, fvf, trafficLights];
