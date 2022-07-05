@@ -2,7 +2,7 @@
 
 const L = require(`leaflet`);
 const {Icon} = require(`../constants`);
-const {ivnBoxes, ivnMunBoxes, ivnCameras, ivnMunCameras} = require(`../../../data`);
+const {ivnBoxes, ivnMunBoxes, ivnCameras, ivnMunCameras, ivnPlacesCameras} = require(`../../../data`);
 
 const {getIvnPins, getCameras} = require(`./utils`);
 
@@ -13,6 +13,9 @@ const ivnCamerasBiometric = getCameras.biometric(ivnCameras);
 const ivnMunCamerasStatic = getCameras.static(ivnMunCameras);
 const ivnMunCamerasDynamic = getCameras.dynamic(ivnMunCameras);
 const ivnMunCamerasBiometric = getCameras.biometric(ivnMunCameras);
+
+const ivnPlacesCamerasStatic = getCameras.static(ivnPlacesCameras);
+const ivnPlacesCamerasDynamic = getCameras.dynamic(ivnPlacesCameras);
 
 const ivnBoxesPins = getIvnPins(ivnBoxes, Icon.Path.IVN_BOX);
 const ivnBoxesLayer = L.layerGroup(ivnBoxesPins);
@@ -32,6 +35,11 @@ const ivnMunCamerasBiometricPins = getIvnPins(ivnMunCamerasBiometric, Icon.Path.
 const ivnMunCamerasPins = [...ivnMunCamerasStaticPins, ...ivnMunCamerasDynamicPins, ...ivnMunCamerasBiometricPins];
 const ivnMunCamerasLayer = L.layerGroup(ivnMunCamerasPins);
 
+const ivnPlacesCamerasStaticPins = getIvnPins(ivnPlacesCamerasStatic, Icon.Path.FVF_PLACES);
+const ivnPlacesCamerasDynamicPins = getIvnPins(ivnPlacesCamerasDynamic, Icon.Path.FVF_PLACES);
+const ivnPlacesPins = [...ivnPlacesCamerasStaticPins, ...ivnPlacesCamerasDynamicPins];
+const ivnPlacesLayer = L.layerGroup(ivnPlacesPins);
+
 module.exports = {
   ivnCameras: {
     layer: ivnCamerasLayer,
@@ -48,5 +56,9 @@ module.exports = {
   ivnMunBoxes: {
     layer: ivnMunBoxesLayer,
     quantity: ivnMunBoxesPins.length,
+  },
+  ivnPlaces: {
+    layer: ivnPlacesLayer,
+    quantity: ivnPlacesPins.length,
   },
 };

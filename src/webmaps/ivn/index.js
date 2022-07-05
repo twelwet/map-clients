@@ -17,6 +17,7 @@ const {
   ivnMunCameras,
   ivnBoxes,
   ivnMunBoxes,
+  ivnPlaces,
 } = require(`./layers`);
 
 mapIconsConfig();
@@ -27,9 +28,10 @@ const overlayMaps = {
   [`ВОЛС СПД города, ${cityNet.distance} км`]: cityNet.layer,
   [`ВОЛС Дирекция ЖКХ, ${jkhNet.distance} км`]: jkhNet.layer,
   [`ИВН-РМ-ТКШ, ${ivnBoxes.quantity} шт`]: ivnBoxes.layer,
-  [`ИВН-РМ-Камеры ${ivnCameras.quantity} шт`]: ivnCameras.layer,
-  [`ИВН-МУН-ТКШ ${ivnMunBoxes.quantity} шт`]: ivnMunBoxes.layer,
-  [`ИВН-МУН-Камеры ${ivnMunCameras.quantity} шт`]: ivnMunCameras.layer,
+  [`ИВН-РМ-Камеры, ${ivnCameras.quantity} шт`]: ivnCameras.layer,
+  [`ИВН-МУН-ТКШ, ${ivnMunBoxes.quantity} шт`]: ivnMunBoxes.layer,
+  [`ИВН-МУН-Камеры, ${ivnMunCameras.quantity} шт`]: ivnMunCameras.layer,
+  [`ИВН Места МВД, ${ivnPlaces.quantity} шт`]: ivnPlaces.layer,
 };
 
 const checkedLayers = [
@@ -38,6 +40,7 @@ const checkedLayers = [
   jkhNet.layer,
   ivnMunCameras.layer,
   ivnMunBoxes.layer,
+  ivnPlaces.layer,
 ];
 
 const map = L.map(`map`, {

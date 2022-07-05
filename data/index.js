@@ -26,12 +26,15 @@ const ivnMunCost = getTotal(getCountable(rawIvnMunCost, [`fiber`, `hardware`]), 
 
 const ivnRmData = getDataByOwner(ivnData, `rm`);
 const ivnMunData = getDataByOwner(ivnData, `city`);
+const ivnPlacesData = getDataByOwner(ivnData, `-`);
 
 const ivnBoxes = getBoxes(ivnRmData);
 const ivnCameras = getCameras(ivnRmData);
 
 const ivnMunBoxes = getBoxes(ivnMunData);
 const ivnMunCameras = getCameras(ivnMunData);
+
+const ivnPlacesCameras = getCameras(ivnPlacesData);
 
 const trafficLightsData = getTotal(getTrafficLightsData(getCountable(trafficLightsRawData, [`fiber`, `last_inch`, `hardware`, `vl-100`, `vl-1000`])), [`installation`, `subscription`]);
 
@@ -47,6 +50,7 @@ module.exports = {
   ivnMunBoxes,
   ivnCameras,
   ivnMunCameras,
+  ivnPlacesCameras,
   ivnMunCost,
   fvfData,
   trafficLightsData,
