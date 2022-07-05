@@ -21,8 +21,8 @@ const getJsonFromCsv = (filename, delimiter = `,`) => {
     .then((json) => json);
 };
 
-const getCsvFromJson = (jsonData, fields) => {
-  const opts = {fields};
+const getCsvFromJson = (jsonData, fields, delimiter = `,`) => {
+  const opts = {fields, delimiter};
 
   try {
     return parse(jsonData, opts);
