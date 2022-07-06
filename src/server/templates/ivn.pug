@@ -34,7 +34,11 @@ block diagram
           Эксплуатация ИВН организована ГУП РМ "НПЦ ИНТ" хозспособом :milestone, mc4, after c4, 1h
   script(src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js')
   script.
-    mermaid.initialize({startOnLoad: true})
+    mermaid.initialize({
+      theme: 'forest',
+      startOnLoad: true,
+      securityLevel: 'loose',
+    });
 
 block content
   - var totalMun = (data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000;
