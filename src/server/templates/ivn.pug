@@ -1,5 +1,30 @@
 extends layout
 
+block diagram
+  .mermaid
+    :markdown-it(inline)
+      gantt
+        title Дорожная карта ИВН
+        %% this is a comment
+        dateFormat  YYYY-MM-DD
+        section Выкуп респ. сегмента
+          Доведение до Минцифры РМ доп. ЛБО (до 15 млн. руб.) :a1, 2022-07-01, 21d
+          Оплата и досрочный выкуп :a2, after a1, 7d
+          Процедура приемки и подписание акта приема-передачи :a3, after a2, 14d
+          Переоформление точек техн. присоединения (э/п) :a4, after a2, 21d
+        section Передача гор. сегмента в казну РМ
+          Аудит передаваемого оборудования и ПО :b1, 2022-07-01, 7d
+          Процедура приемки и подписание акта приема-передачи :b2, after b1, 14d
+          Переоформление точек техн. присоединения (э/п) :b3, after b1, 28d
+        section Эксплуатация подсистемы ИВН
+          Передача подсистемы ИВН в хоз. ведение ГУП РМ "НПЦ ИНТ" :c1, 2022-07-22, 41d
+          Передислокация рубежей контроля на актуальные адреса (в соответствии с письмом МВД по Республике Мордовия) :c2, after c1, 90d
+          Перевод сети передачи данных ИВН на республиканскую инфраструктуру (расширение существующей сети передачи данных) :c3, after c1, 90d
+          Обеспечение полноценной эксплуатации подсистемы ИВН силами  ГУП РМ "НПЦ ИНТ" :c4, after c1, 120d
+  script(src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js')
+  script.
+    mermaid.initialize({startOnLoad: true})
+
 block content
   - var totalMun = (data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000;
   - var hardwareResp = 6210;
@@ -82,4 +107,3 @@ block content
         b ИТОГО
       td(class=`text-end`)
         b= totalResp.toFixed(2)
-
