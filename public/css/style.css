@@ -3,9 +3,9 @@ body {
   margin: 0;
 }
 html, body, #map {
-  height: 800px;
+  height: 550px;
   width: 100%;
 }
 .info-container {
-  height: 800px;
+  height: 550px;
 }
