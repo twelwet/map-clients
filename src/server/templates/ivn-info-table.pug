@@ -1,0 +1,126 @@
+- var totalMun = (data[`munCostData`][`total`][`fiber`] + data[`munCostData`][`total`][`hardware`]) / 1000;
+- var hardwareResp = 6210;
+- var fiberResp = 12833;
+- var lastInchesResp = 7250;
+- var totalResp = hardwareResp + fiberResp + lastInchesResp;
+- var softwareUpdate = 2503.38;
+- var education = 350;
+- var total = totalMun + totalResp + softwareUpdate + education;
+- var opexEl = 1020;
+- var opexUnit = 84 * 2500 * 12 / 1000;
+- var opexSalary = 3 * 60000 * 12 / 1000;
+- var opexPowerLineTower = 480 * 550 * 12 / 1000;
+- var opex = opexEl + opexUnit + opexSalary + opexPowerLineTower;
+h5
+  b= `Затраты на подключение ИВН`
+table(class=`table table-light`)
+  tr
+    th #
+    th Наименование
+    th Стоимость, тыс. руб.
+  tr
+    td 1
+    td Подключение муниципального сегмента ИВН
+    td(class=`text-end`)= totalMun.toFixed(2)
+  tr
+    td 2
+    td Подключение республиканского сегмента ИВН
+    td(class=`text-end`)= totalResp.toFixed(2)
+  tr
+    td 3
+    td Обновление 'SecureOS Enterprise' c 9.x до 11.x
+    td(class=`text-end`)= softwareUpdate.toFixed(2)
+  tr
+    td 4
+    td Работы по обновлению системы SecureOS и повышение квалификации (2 штатных единицы)
+    td(class=`text-end`)= education.toFixed(2)
+  tr
+    td
+      b -
+    td
+      b ИТОГО
+    td(class=`text-end`)
+      b= total.toFixed(2)
+h5
+  b= `Затраты на эксплуатацию системы ИВН`
+table(class=`table table-light`)
+  tr
+    th #
+    th Наименование
+    th Стоимость, тыс. руб. / год
+  tr
+    td 1
+    td Затраты на электроэнергию (8 руб. / кВтч)
+    td(class=`text-end`)= opexEl.toFixed(2)
+  tr
+    td 2
+    td Аренда юнитомест ЦОД (84 ЮМ по 2500 руб./мес)
+    td(class=`text-end`)= opexUnit.toFixed(2)
+  tr
+    td 3
+    td ФОТ и фонды (3 штатных единицы)
+    td(class=`text-end`)= opexSalary.toFixed(2)
+  tr
+    td 4
+    td Аренда опор ЛЭП (480 опор по 550 руб/мес)
+    td(class=`text-end`)= opexPowerLineTower.toFixed(2)
+  tr
+    td
+      b -
+    td
+      b ИТОГО
+    td(class=`text-end`)
+      b= opex.toFixed(2)
+h6
+  b= `Подключение муниципального сегмента`
+table(class=`table table-light`)
+  tr
+    th #
+    th Наименование
+    th ВОЛС, тыс. руб.
+    th ТКШ, тыс. руб.
+    th Итого, тыс. руб.
+  each item, index in data[`munCostData`]
+    tr
+      td= index + 1
+      td= item[`name`]
+      td(class=`text-end`)= (item[`fiber`] / 1000).toFixed(2)
+      td(class=`text-end`)= (item[`hardware`] / 1000).toFixed(2)
+      td(class=`text-end`)= ((item[`fiber`] + item[`hardware`]) / 1000).toFixed(2)
+  tr
+    td
+      b -
+    td
+      b ИТОГО
+    td(class=`text-end`)
+      b= (data[`munCostData`][`total`][`fiber`] / 1000).toFixed(2)
+    td(class=`text-end`)
+      b= (data[`munCostData`][`total`][`hardware`] / 1000).toFixed(2)
+    td(class=`text-end`)
+      b= totalMun.toFixed(2)
+h6
+  b= `Подключение республиканского сегмента`
+table(class=`table table-light`)
+  tr
+    th #
+    th Наименование
+    th Стоимость, тыс. руб.
+  tr
+    td 1
+    td Закупка и монтаж ТКШ (135 шт)
+    td(class=`text-end`)= hardwareResp.toFixed(2)
+  tr
+    td 2
+    td Строительство ВОЛС (46 км)
+    td(class=`text-end`)= fiberResp.toFixed(2)
+  tr
+    td 1
+    td Строительство “последних дюймов” (414 шт)
+    td(class=`text-end`)= lastInchesResp.toFixed(2)
+  tr
+    td
+      b -
+    td
+      b ИТОГО
+    td(class=`text-end`)
+      b= totalResp.toFixed(2)
