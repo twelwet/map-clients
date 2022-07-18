@@ -21,6 +21,7 @@ const {
   strelkas,
   places,
   checkedPlaces,
+  priorityPlaces,
 } = require(`./layers`);
 
 mapIconsConfig();
@@ -38,6 +39,7 @@ const overlayMaps = {
   [`ФВФ Стрелки, ${strelkas.quantity} шт`]: strelkas.layer,
   [`ФВФ места МВД, ${places.quantity} шт`]: places.layer,
   [`ФВФ выбранные места, ${checkedPlaces.quantity} шт`]: checkedPlaces.layer,
+  [`ФВФ приоритетные места, ${priorityPlaces.quantity} шт`]: priorityPlaces.layer,
 };
 
 const checkedLayers = [
@@ -52,6 +54,7 @@ const checkedLayers = [
   strelkas.layer,
   // places.layer,
   checkedPlaces.layer,
+  priorityPlaces.layer,
 ];
 
 const map = L.map(`map`, {

@@ -23,6 +23,8 @@ const getFvfPlaces = (data) => data.filter((item) => item[`name`].startsWith(`П
 
 const getFvfCheckedPlaces = (data) => data.filter((item) => item[`is_checked`]);
 
+const getFvfPriorityPlaces = (data) => data.filter((item) => item[`priority_flag`]);
+
 const getFvfPins = (fvfData, iconPath) => {
   const pinIcon = getPinIcon(iconPath);
 
@@ -45,5 +47,6 @@ module.exports = {
   getStrelkas,
   getFvfPlaces,
   getFvfCheckedPlaces,
+  getFvfPriorityPlaces,
   getFvfPins,
 };

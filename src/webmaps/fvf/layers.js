@@ -13,6 +13,7 @@ const {
   getStrelkas,
   getFvfPlaces,
   getFvfCheckedPlaces,
+  getFvfPriorityPlaces,
   getFvfPins,
 } = require(`./utils`);
 
@@ -24,6 +25,7 @@ const radars = getRadars(fvfData);
 const {strelkasWorked, strelkasDamaged} = getStrelkas(fvfData);
 const places = getFvfPlaces(fvfData);
 const checkedPlaces = getFvfCheckedPlaces(fvfData);
+const priorityPlaces = getFvfPriorityPlaces(fvfData);
 
 const vokordsPins = getFvfPins(vokords, Icon.Path.VOKORD);
 const vokordsLayer = L.layerGroup(vokordsPins);
@@ -50,6 +52,9 @@ const placesLayer = L.layerGroup(placesPins);
 
 const checkedPlacesPins = getFvfPins(checkedPlaces, Icon.Path.FVF_CHECKED_PLACES);
 const checkedPlacesLayer = L.layerGroup(checkedPlacesPins);
+
+const priorityPlacesPins = getFvfPins(priorityPlaces, Icon.Path.FVF_PRIORITY_PLACES);
+const priorityPlacesLayer = L.layerGroup(priorityPlacesPins);
 
 module.exports = {
   vokords: {
@@ -83,5 +88,9 @@ module.exports = {
   checkedPlaces: {
     layer: checkedPlacesLayer,
     quantity: checkedPlacesPins.length,
+  },
+  priorityPlaces: {
+    layer: priorityPlacesLayer,
+    quantity: priorityPlacesPins.length,
   },
 };
