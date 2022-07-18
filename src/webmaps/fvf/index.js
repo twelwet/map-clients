@@ -1,7 +1,6 @@
 'use strict';
 
 const L = require(`leaflet`);
-const {MapSetting} = require(`../constants`);
 const {mapIconsConfig} = require(`../map-utils`);
 
 const {
@@ -19,8 +18,6 @@ const {
   perekrestoks,
   radars,
   strelkas,
-  places,
-  checkedPlaces,
   priorityPlaces,
 } = require(`./layers`);
 
@@ -37,29 +34,31 @@ const overlayMaps = {
   [`ФВФ Перекрестки, ${perekrestoks.quantity} шт`]: perekrestoks.layer,
   [`ФВФ Радары, ${radars.quantity} шт`]: radars.layer,
   [`ФВФ Стрелки, ${strelkas.quantity} шт`]: strelkas.layer,
-  [`ФВФ места МВД, ${places.quantity} шт`]: places.layer,
-  [`ФВФ выбранные места, ${checkedPlaces.quantity} шт`]: checkedPlaces.layer,
-  [`ФВФ приоритетные места, ${priorityPlaces.quantity} шт`]: priorityPlaces.layer,
+  [`ФВФ места МВД (Приоритет 1), ${priorityPlaces.one.quantity} шт`]: priorityPlaces.one.layer,
+  [`ФВФ места МВД (Приоритет 2), ${priorityPlaces.two.quantity} шт`]: priorityPlaces.two.layer,
+  [`ФВФ места МВД (Приоритет 3), ${priorityPlaces.three.quantity} шт`]: priorityPlaces.three.layer,
+  [`ФВФ места МВД (Приоритет 4), ${priorityPlaces.four.quantity} шт`]: priorityPlaces.four.layer,
 };
 
 const checkedLayers = [
   backbone.layer,
   cityNet.layer,
   jkhNet.layer,
-  vokords.layer,
-  forsazhs.layer,
-  potoks.layer,
-  perekrestoks.layer,
-  radars.layer,
-  strelkas.layer,
-  // places.layer,
-  checkedPlaces.layer,
-  priorityPlaces.layer,
+  // vokords.layer,
+  // forsazhs.layer,
+  // potoks.layer,
+  // perekrestoks.layer,
+  // radars.layer,
+  // strelkas.layer,
+  priorityPlaces.one.layer,
+  priorityPlaces.two.layer,
+  // priorityPlaces.three.layer,
+  // priorityPlaces.four.layer,
 ];
 
 const map = L.map(`map`, {
-  center: MapSetting.CENTER,
-  zoom: MapSetting.ZOOM,
+  center: [54.357, 44.744],
+  zoom: 9,
   layers: checkedLayers,
 });
 
