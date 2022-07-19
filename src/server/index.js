@@ -13,6 +13,7 @@ app.set(`json spaces`, 2);
 app.use(express.json());
 
 const PUBLIC_DIR = `../../public`;
+const DOWNLOAD_DIR = `public/download`;
 
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
 app.use(express.urlencoded({extended: false}));
@@ -31,6 +32,14 @@ for (const page of pages) {
     res.render(`${page[`pageName`]}`, pageContent);
   });
 }
+
+app.get(`/fvf/data`, (req, res) => {
+  res.download(`${DOWNLOAD_DIR}/data.xlsx`, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
 
 app.listen(
     PORT,

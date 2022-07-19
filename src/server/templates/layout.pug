@@ -16,8 +16,8 @@ html
             else
               a(href=`${item[`link`]}`)= item[`menuName`]
     block diagram
-    .d-flex.flex-row.align-items-stretch
-      div#map.p-2
-      div.p-2.overflow-auto.info-container
+    .p-3.mt-3.d-flex.flex-row.align-items-stretch
+      div.overflow-auto.info-container
         block content
+      div#map.p-2
     script(src= mapScript)

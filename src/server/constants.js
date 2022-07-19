@@ -1,6 +1,7 @@
 'use strict';
 
 const {ivnMunCost, trafficLightsData} = require(`../../data`);
+const {placesByPriority, priorityNames} = require(`./prepared-fvf-data`);
 
 const Title = {
   BACKBONE: `Магистраль`,
@@ -69,7 +70,10 @@ const fvf = {
   link: Link.FVF,
   menuName: Title.FVF,
   pageName: PageName.FVF,
-  data: {},
+  data: {
+    placesByPriority,
+    priorityNames,
+  },
 };
 
 const trafficLights = {
