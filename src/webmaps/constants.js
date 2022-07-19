@@ -5,11 +5,13 @@ const MapSetting = {
   ZOOM: 13,
   ID: `mapbox/streets-v11`,
   TILE_SIZE: 512,
-  ACCESS_TOKEN: `your.mapbox.access.token`,
+  ACCESS_TOKEN: `lYi7ttPIGK3BC5YO21nCScB2X17Vax7OAfLb6v5K7wt9x9zCeFVALLTWCsWvtlpv`,
   ZOOM_OFFSET: -1,
+  MIN_ZOOM: 6,
   MAX_ZOOM: 18,
-  LAYER_URL: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
-  ATTRIBUTION: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
+  SUBDOMAINS: `abcd`,
+  LAYER_URL: `https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}`,
+  ATTRIBUTION: `<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`,
 };
 
 const Icon = {

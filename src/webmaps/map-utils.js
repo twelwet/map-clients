@@ -30,7 +30,9 @@ const mapIconsConfig = () => {
 const getTileLayer = () => {
   return L.tileLayer(MapSetting.LAYER_URL, {
     attribution: MapSetting.ATTRIBUTION,
+    minZoom: MapSetting.MIN_ZOOM,
     maxZoom: MapSetting.MAX_ZOOM,
+    subdomains: MapSetting.SUBDOMAINS,
     id: MapSetting.ID,
     tileSize: MapSetting.TILE_SIZE,
     zoomOffset: MapSetting.ZOOM_OFFSET,
