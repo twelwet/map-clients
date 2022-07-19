@@ -3,7 +3,7 @@
 require(`dotenv`).config();
 const express = require(`express`);
 const path = require(`path`);
-const {pages} = require(`./constants`);
+const {pages} = require(`./pages-data`);
 const {getHeaderMenu, errorHandler} = require(`./utils`);
 const PORT = process.env.SERVER_PORT;
 
