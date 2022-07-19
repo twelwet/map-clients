@@ -58,4 +58,20 @@ const trafficLights = {
 
 const pages = [backbone, clients, ivn, fvf, trafficLights];
 
-module.exports = {pages};
+
+const downloadableFiles = [
+  {
+    link: `download/fvf/places`,
+    path: `fvf/places-fvf.xlsx`,
+  },
+  {
+    link: `download/fvf/roadmap`,
+    path: `fvf/roadmap-fvf.xlsx`,
+  },
+  {
+    link: `download/ivn/roadmap`,
+    path: `ivn/roadmap-ivn.xlsx`,
+  },
+];
+
+module.exports = {pages, downloadableFiles};
