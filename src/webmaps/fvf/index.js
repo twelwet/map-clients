@@ -58,7 +58,7 @@ const checkedLayers = [
 
 const map = L.map(`map`, {
   center: [54.357, 44.744],
-  zoom: 9,
+  zoom: 8,
   layers: checkedLayers,
 });
 
