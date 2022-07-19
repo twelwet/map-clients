@@ -1,6 +1,11 @@
 .p-3
-  h6.text-center
-    b Дорожная карта ФВФ
+  .bg-light.d-flex.flex-row.align-items-stretch.justify-content-center.pt-2.pb-2
+    div
+      h5
+        b Дорожная карта ФВФ
+    div
+      form(action="/download/fvf/roadmap", method="get")
+        button.btn.btn-link.pt-0(type="submit") &#8595; .XLSX
   .mermaid
     :markdown-it(inline)
       gantt

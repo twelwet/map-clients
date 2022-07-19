@@ -8,4 +8,10 @@ const getHeaderMenu = (activePageName, allPages) => {
   }));
 };
 
-module.exports = {getHeaderMenu};
+const errorHandler = (err) => {
+  if (err) {
+    console.log(err);
+  }
+};
+
+module.exports = {getHeaderMenu, errorHandler};

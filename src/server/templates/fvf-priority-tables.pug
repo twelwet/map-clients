@@ -1,10 +1,10 @@
-div.sticky-top.bg-light.d-flex.flex-row.align-items-stretch.justify-content-around
+div.sticky-top.bg-light.d-flex.flex-row.align-items-stretch.justify-content-center.pt-2.pb-2
   div
-    h4
+    h5
       b Список мест размещения
   div
-    form(action="/data", method="get")
-      button.btn.btn-link(type="submit") &#8595; .XLSX
+    form(action="/download/fvf/places", method="get")
+      button.btn.btn-link.pt-0(type="submit") &#8595; .XLSX
 each name, index in data.priorityNames
   div
     h5.text-center

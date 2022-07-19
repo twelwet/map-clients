@@ -4,7 +4,7 @@ require(`dotenv`).config();
 const express = require(`express`);
 const path = require(`path`);
 const {pages} = require(`./constants`);
-const {getHeaderMenu} = require(`./utils`);
+const {getHeaderMenu, errorHandler} = require(`./utils`);
 const PORT = process.env.SERVER_PORT;
 
 const app = express();
@@ -33,12 +33,16 @@ for (const page of pages) {
   });
 }
 
-app.get(`/fvf/data`, (req, res) => {
-  res.download(`${DOWNLOAD_DIR}/data.xlsx`, (err) => {
-    if (err) {
-      console.log(err);
-    }
-  });
+app.get(`/download/fvf/places`, (req, res) => {
+  res.download(`${DOWNLOAD_DIR}/fvf/places-fvf.xlsx`, errorHandler);
+});
+
+app.get(`/download/ivn/roadmap`, (req, res) => {
+  res.download(`${DOWNLOAD_DIR}/ivn/roadmap-ivn.xlsx`, errorHandler);
+});
+
+app.get(`/download/fvf/roadmap`, (req, res) => {
+  res.download(`${DOWNLOAD_DIR}/fvf/roadmap-fvf.xlsx`, errorHandler);
 });
 
 app.listen(
