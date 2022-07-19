@@ -72,6 +72,10 @@ const downloadableFiles = [
     link: `download/ivn/roadmap`,
     path: `ivn/roadmap-ivn.xlsx`,
   },
+  {
+    link: `download/ivn/costs`,
+    path: `ivn/costs-ivn.xlsx`,
+  },
 ];
 
 module.exports = {pages, downloadableFiles};
