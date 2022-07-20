@@ -1,6 +1,6 @@
 'use strict';
 
-const {getCountable, getTotal, getDataByOwner, getBoxes, getCameras, getTrafficLightsData} = require(`./utils`);
+const {getCountable, getTotal, getDataByOwner, getBoxes, getCameras, getTrafficLightsData, saveDataToPriorityLines} = require(`./utils`);
 
 const nodes = require(`./json/nodes.json`);
 const objects = require(`./json/objects.json`);
@@ -8,6 +8,7 @@ const backboneNetRaw = require(`./json/fiber-lines-backbone.json`);
 const cityNet = require(`./json/fiber-lines-city-net.json`);
 const jkhNet = require(`./json/fiber-lines-jkh-net.json`);
 const fvfData = require(`./json/fvf.json`);
+const fvfLinesPriorityOneRaw = require(`./json/fvf-lines-priority-1.json`);
 const ivnData = require(`./json/ivn.json`);
 const rawIvnData = require(`./raw/ivn.json`);
 const rawIvnMunData = require(`./raw/ivn-mun.json`);
@@ -36,6 +37,8 @@ const ivnMunCameras = getCameras(ivnMunData);
 
 const ivnPlacesCameras = getCameras(ivnPlacesData);
 
+const fvfLinesPriorityOne = saveDataToPriorityLines(fvfData, fvfLinesPriorityOneRaw[`features`]);
+
 const trafficLightsData = getTotal(getTrafficLightsData(getCountable(trafficLightsRawData, [`fiber`, `last_inch`, `hardware`, `vl-100`, `vl-1000`])), [`installation`, `subscription`]);
 
 module.exports = {
@@ -53,5 +56,6 @@ module.exports = {
   ivnPlacesCameras,
   ivnMunCost,
   fvfData,
+  fvfLinesPriorityOne,
   trafficLightsData,
 };

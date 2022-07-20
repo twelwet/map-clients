@@ -19,6 +19,7 @@ const {
   radars,
   strelkas,
   priorityPlaces,
+  priorityLines,
 } = require(`./layers`);
 
 mapIconsConfig();
@@ -34,7 +35,7 @@ const overlayMaps = {
   [`ФВФ Перекрестки, ${perekrestoks.quantity} шт`]: perekrestoks.layer,
   [`ФВФ Радары, ${radars.quantity} шт`]: radars.layer,
   [`ФВФ Стрелки, ${strelkas.quantity} шт`]: strelkas.layer,
-  [`ФВФ места МВД (Приоритет 1), ${priorityPlaces.one.quantity} шт`]: priorityPlaces.one.layer,
+  [`ФВФ места МВД (Приоритет 1), ${priorityLines.one.quantity} шт`]: priorityLines.one.layer,
   [`ФВФ места МВД (Приоритет 2), ${priorityPlaces.two.quantity} шт`]: priorityPlaces.two.layer,
   [`ФВФ места МВД (Приоритет 3), ${priorityPlaces.three.quantity} шт`]: priorityPlaces.three.layer,
   [`ФВФ места МВД (Приоритет 4), ${priorityPlaces.four.quantity} шт`]: priorityPlaces.four.layer,
@@ -50,7 +51,7 @@ const checkedLayers = [
   // perekrestoks.layer,
   // radars.layer,
   // strelkas.layer,
-  priorityPlaces.one.layer,
+  priorityLines.one.layer,
   priorityPlaces.two.layer,
   // priorityPlaces.three.layer,
   // priorityPlaces.four.layer,

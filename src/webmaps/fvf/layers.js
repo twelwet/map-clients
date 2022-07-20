@@ -2,7 +2,7 @@
 
 const L = require(`leaflet`);
 const {Icon} = require(`../constants`);
-const {fvfData} = require(`../../../data`);
+const {fvfData, fvfLinesPriorityOne} = require(`../../../data`);
 
 const {
   getVokords,
@@ -13,6 +13,7 @@ const {
   getStrelkas,
   getFvfPlaces,
   getFvfPriorityPlaces,
+  getLinesLayer,
   getFvfPins,
 } = require(`./utils`);
 
@@ -79,6 +80,13 @@ const priorityPlaces = {
   },
 };
 
+const priorityLines = {
+  one: {
+    quantity: 14,
+    layer: getLinesLayer(fvfLinesPriorityOne, `#ff0000`),
+  },
+};
+
 module.exports = {
   vokords: {
     layer: vokordsLayer,
@@ -105,4 +113,5 @@ module.exports = {
     quantity: strelkasPins.length,
   },
   priorityPlaces,
+  priorityLines,
 };
