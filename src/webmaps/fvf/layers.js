@@ -2,7 +2,7 @@
 
 const L = require(`leaflet`);
 const {Icon} = require(`../constants`);
-const {fvfData, fvfLinesPriorityOne} = require(`../../../data`);
+const {fvfData, fvfLinesPriorityOne, fvfLinesPriorityTwo, fvfLinesPriorityThree, fvfLinesPriorityFour} = require(`../../../data`);
 
 const {
   getVokords,
@@ -82,8 +82,20 @@ const priorityPlaces = {
 
 const priorityLines = {
   one: {
-    quantity: 14,
+    quantity: fvfLinesPriorityOne.length,
     layer: getLinesLayer(fvfLinesPriorityOne, `#ff0000`),
+  },
+  two: {
+    quantity: fvfLinesPriorityTwo.length,
+    layer: getLinesLayer(fvfLinesPriorityTwo, `#ff7f00`),
+  },
+  three: {
+    quantity: fvfLinesPriorityThree.length,
+    layer: getLinesLayer(fvfLinesPriorityThree, `#ccc000`),
+  },
+  four: {
+    quantity: fvfLinesPriorityFour.length,
+    layer: getLinesLayer(fvfLinesPriorityFour, `#bbb`),
   },
 };
 
