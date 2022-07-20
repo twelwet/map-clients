@@ -48,6 +48,20 @@ const getFvfPins = (fvfData, iconPath) => {
   return fvfPins;
 };
 
+const getPlacesFvfPins = (fvfData, iconPath) => {
+  const pinIcon = getPinIcon(iconPath);
+
+  const fvfPins = [];
+  for (const feature of fvfData) {
+    fvfPins
+      .push(L.marker([feature[`latitude`], feature[`longitude`]], {icon: pinIcon})
+        .bindPopup(`<b>${feature[`description`]}</b><br>${feature[`name`]}<br>Тип дороги: "${feature[`road_type`]}"<br>${feature[`address`]}<br>${feature[`contractor`]}`));
+  }
+
+  return fvfPins;
+};
+
+
 module.exports = {
   getVokords,
   getPotoks,
@@ -60,4 +74,5 @@ module.exports = {
   getFvfPriorityPlaces,
   getLinesLayer,
   getFvfPins,
+  getPlacesFvfPins,
 };

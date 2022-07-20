@@ -15,6 +15,7 @@ const {
   getFvfPriorityPlaces,
   getLinesLayer,
   getFvfPins,
+  getPlacesFvfPins,
 } = require(`./utils`);
 
 const vokords = getVokords(fvfData);
@@ -49,33 +50,33 @@ const strelkasDamagedPins = getFvfPins(strelkasDamaged, Icon.Path.STRELKA_DAMAGE
 const strelkasPins = [...strelkasWorkedPins, ...strelkasDamagedPins];
 const strelkasLayer = L.layerGroup(strelkasPins);
 
-const priorityLines = {
+const priorityPlaces = {
   one: {
     quantity: fvfLinesPriorityOne.length,
     layer: L.layerGroup([
       ...getLinesLayer(fvfLinesPriorityOne, `#ff0000`).getLayers(),
-      ...getFvfPins(priorityOnePlaces, Icon.Path.FVF_PRIORITY_ONE),
+      ...getPlacesFvfPins(priorityOnePlaces, Icon.Path.FVF_PRIORITY_ONE),
     ]),
   },
   two: {
     quantity: fvfLinesPriorityTwo.length,
     layer: L.layerGroup([
       ...getLinesLayer(fvfLinesPriorityTwo, `#ff7f00`).getLayers(),
-      ...getFvfPins(priorityTwoPlaces, Icon.Path.FVF_PRIORITY_TWO),
+      ...getPlacesFvfPins(priorityTwoPlaces, Icon.Path.FVF_PRIORITY_TWO),
     ]),
   },
   three: {
     quantity: fvfLinesPriorityThree.length,
     layer: L.layerGroup([
       ...getLinesLayer(fvfLinesPriorityThree, `#ccc000`).getLayers(),
-      ...getFvfPins(priorityThreePlaces, Icon.Path.FVF_PRIORITY_THREE),
+      ...getPlacesFvfPins(priorityThreePlaces, Icon.Path.FVF_PRIORITY_THREE),
     ]),
   },
   four: {
     quantity: fvfLinesPriorityFour.length,
     layer: L.layerGroup([
       ...getLinesLayer(fvfLinesPriorityFour, `#bbb`).getLayers(),
-      ...getFvfPins(priorityFourPlaces, Icon.Path.FVF_PRIORITY_FOUR),
+      ...getPlacesFvfPins(priorityFourPlaces, Icon.Path.FVF_PRIORITY_FOUR),
     ]),
   },
 };
@@ -105,5 +106,5 @@ module.exports = {
     layer: strelkasLayer,
     quantity: strelkasPins.length,
   },
-  priorityLines,
+  priorityPlaces,
 };
