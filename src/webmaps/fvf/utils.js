@@ -31,7 +31,7 @@ const getLinesLayer = (lines, color) => L.geoJSON(lines, {
     [`weight`]: 10,
   }),
   onEachFeature: (feature, layer) => {
-    layer.bindPopup(`<b>${feature[`data`][`description`]}</b><br>${feature[`data`][`name`]}<br>Тип дороги: "${feature[`data`][`road_type`]}"<br>${feature[`data`][`address`]}<br>${feature[`data`][`contractor`]}`);
+    layer.bindPopup(`<b>Приоритет ${feature[`data`][`priority_level`]}</b><br>Место №${feature[`data`][`id`].slice(7)}<br>${feature[`data`][`name`]}<br>Тип дороги: "${feature[`data`][`road_type`]}"<br>${feature[`data`][`address`]}<br><b>${feature[`data`][`description`]}</b><br>${feature[`data`][`contractor`]}`);
   },
 });
 
@@ -55,7 +55,7 @@ const getPlacesFvfPins = (fvfData, iconPath) => {
   for (const feature of fvfData) {
     fvfPins
       .push(L.marker([feature[`latitude`], feature[`longitude`]], {icon: pinIcon})
-        .bindPopup(`<b>${feature[`description`]}</b><br>${feature[`name`]}<br>Тип дороги: "${feature[`road_type`]}"<br>${feature[`address`]}<br>${feature[`contractor`]}`));
+        .bindPopup(`<b>Приоритет ${feature[`priority_level`]}</b><br>Место №${feature[`id`].slice(7)}<br>${feature[`name`]}<br>Тип дороги: "${feature[`road_type`]}"<br>${feature[`address`]}<br><b>${feature[`description`]}</b><br>${feature[`contractor`]}`));
   }
 
   return fvfPins;
