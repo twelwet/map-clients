@@ -52,7 +52,7 @@ const checkedLayers = [
   // strelkas.layer,
   priorityPlaces.one.layer,
   priorityPlaces.two.layer,
-  priorityPlaces.three.layer,
+  // priorityPlaces.three.layer,
   // priorityPlaces.four.layer,
 ];
 

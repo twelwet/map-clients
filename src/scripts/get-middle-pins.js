@@ -31,5 +31,5 @@ const getMiddlePins = (lines) => {
 
 const data = getMiddlePins(fvfLinesPriority);
 
-saveToFile(`data/raw/fvf-middle-pins.csv`, getCsvFromJson(data, [`name`, `latitude`, `longitude`]))
+saveToFile(`data/temp/fvf-middle-pins.csv`, getCsvFromJson(data, [`name`, `latitude`, `longitude`]))
   .then(() => console.log(`Operation is successful.`));
