@@ -8,6 +8,7 @@ const getPotoks = (data) => data.filter((item) => item[`model`].startsWith(`По
 const getForsazhs = (data) => data.filter((item) => item[`model`].startsWith(`Форсаж`));
 const getPerekrestoks = (data) => data.filter((item) => item[`model`].startsWith(`Перекресток`));
 const getRadars = (data) => data.filter((item) => item[`model`].startsWith(`MultаRadar`));
+const getCordons = (data) => data.filter((item) => item[`model`].startsWith(`Кордон`));
 
 const getStrelkas = (data) => {
   const allStrelkas = data.filter((item) => item[`model`].startsWith(`Стрелка-М`));
@@ -25,15 +26,15 @@ const getFvfCheckedPlaces = (data) => data.filter((item) => item[`is_checked`]);
 
 const getFvfPriorityPlaces = (data, level) => data.filter((item) => item[`priority_level`] === level);
 
-const getLinesLayer = (lines, color) => L.geoJSON(lines, {
-  style: () => ({
-    color,
-    [`weight`]: 10,
-  }),
-  onEachFeature: (feature, layer) => {
-    layer.bindPopup(`<b>Приоритет ${feature[`data`][`priority_level`]}</b><br>Место №${feature[`data`][`id`].slice(7)}<br>${feature[`data`][`name`]}<br>Тип дороги: "${feature[`data`][`road_type`]}"<br>${feature[`data`][`address`]}<br><b>${feature[`data`][`description`]}</b><br>${feature[`data`][`contractor`]}`);
-  },
-});
+// const getLinesLayer = (lines, color) => L.geoJSON(lines, {
+//   style: () => ({
+//     color,
+//     [`weight`]: 10,
+//   }),
+//   onEachFeature: (feature, layer) => {
+//     layer.bindPopup(`<b>Приоритет ${feature[`data`][`priority_level`]}</b><br>Место №${feature[`data`][`id`].slice(7)}<br>${feature[`data`][`name`]}<br>Тип дороги: "${feature[`data`][`road_type`]}"<br>${feature[`data`][`address`]}<br><b>${feature[`data`][`description`]}</b><br>${feature[`data`][`contractor`]}`);
+//   },
+// });
 
 const getFvfPins = (fvfData, iconPath) => {
   const pinIcon = getPinIcon(iconPath);
@@ -69,10 +70,11 @@ module.exports = {
   getPerekrestoks,
   getRadars,
   getStrelkas,
+  getCordons,
   getFvfPlaces,
   getFvfCheckedPlaces,
   getFvfPriorityPlaces,
-  getLinesLayer,
+  // getLinesLayer,
   getFvfPins,
   getPlacesFvfPins,
 };

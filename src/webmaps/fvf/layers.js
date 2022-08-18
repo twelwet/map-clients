@@ -2,7 +2,7 @@
 
 const L = require(`leaflet`);
 const {Icon} = require(`../constants`);
-const {fvfData, fvfLinesPriorityOne, fvfLinesPriorityTwo, fvfLinesPriorityThree, fvfLinesPriorityFour} = require(`../../../data`);
+const {fvfData} = require(`../../../data`);
 
 const {
   getVokords,
@@ -11,9 +11,9 @@ const {
   getPerekrestoks,
   getRadars,
   getStrelkas,
+  getCordons,
   getFvfPlaces,
   getFvfPriorityPlaces,
-  getLinesLayer,
   getFvfPins,
   getPlacesFvfPins,
 } = require(`./utils`);
@@ -24,6 +24,7 @@ const forsazhs = getForsazhs(fvfData);
 const perekrestoks = getPerekrestoks(fvfData);
 const radars = getRadars(fvfData);
 const {strelkasWorked, strelkasDamaged} = getStrelkas(fvfData);
+const cordons = getCordons(fvfData);
 const places = getFvfPlaces(fvfData);
 const priorityOnePlaces = getFvfPriorityPlaces(places, `1`);
 const priorityTwoPlaces = getFvfPriorityPlaces(places, `2`);
@@ -50,32 +51,35 @@ const strelkasDamagedPins = getFvfPins(strelkasDamaged, Icon.Path.STRELKA_DAMAGE
 const strelkasPins = [...strelkasWorkedPins, ...strelkasDamagedPins];
 const strelkasLayer = L.layerGroup(strelkasPins);
 
+const cordonsPins = getFvfPins(cordons, Icon.Path.CORDON);
+const cordonsLayer = L.layerGroup(cordonsPins);
+
 const priorityPlaces = {
   one: {
-    quantity: fvfLinesPriorityOne.length,
+    quantity: priorityOnePlaces.length,
     layer: L.layerGroup([
-      ...getLinesLayer(fvfLinesPriorityOne, `#ff0000`).getLayers(),
+      // ...getLinesLayer(fvfLinesPriorityOne, `#ff0000`).getLayers(),
       ...getPlacesFvfPins(priorityOnePlaces, Icon.Path.FVF_PRIORITY_ONE),
     ]),
   },
   two: {
-    quantity: fvfLinesPriorityTwo.length,
+    quantity: priorityTwoPlaces.length,
     layer: L.layerGroup([
-      ...getLinesLayer(fvfLinesPriorityTwo, `#ff7f00`).getLayers(),
+      // ...getLinesLayer(fvfLinesPriorityTwo, `#ff7f00`).getLayers(),
       ...getPlacesFvfPins(priorityTwoPlaces, Icon.Path.FVF_PRIORITY_TWO),
     ]),
   },
   three: {
-    quantity: fvfLinesPriorityThree.length,
+    quantity: priorityThreePlaces.length,
     layer: L.layerGroup([
-      ...getLinesLayer(fvfLinesPriorityThree, `#ccc000`).getLayers(),
+      // ...getLinesLayer(fvfLinesPriorityThree, `#ccc000`).getLayers(),
       ...getPlacesFvfPins(priorityThreePlaces, Icon.Path.FVF_PRIORITY_THREE),
     ]),
   },
   four: {
-    quantity: fvfLinesPriorityFour.length,
+    quantity: priorityFourPlaces.length,
     layer: L.layerGroup([
-      ...getLinesLayer(fvfLinesPriorityFour, `#bbb`).getLayers(),
+      // ...getLinesLayer(fvfLinesPriorityFour, `#bbb`).getLayers(),
       ...getPlacesFvfPins(priorityFourPlaces, Icon.Path.FVF_PRIORITY_FOUR),
     ]),
   },
@@ -105,6 +109,10 @@ module.exports = {
   strelkas: {
     layer: strelkasLayer,
     quantity: strelkasPins.length,
+  },
+  cordons: {
+    layer: cordonsLayer,
+    quantity: cordonsPins.length,
   },
   priorityPlaces,
 };

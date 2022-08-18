@@ -3,9 +3,11 @@
 const {fvfData} = require(`../../data`);
 
 const getFvfPlaces = (data) => data.filter((item) => item[`id`].startsWith(`FVF-PLC`));
+const getCordons = (data) => data.filter((item) => item[`model`].startsWith(`Кордон`));
 const getFvfPriorityPlaces = (data, level) => data.filter((item) => item[`priority_level`] === level);
 
 const places = getFvfPlaces(fvfData);
+const cordons = getCordons(fvfData);
 
 const placesByPriority = {
   one: getFvfPriorityPlaces(places, `1`),
@@ -16,4 +18,4 @@ const placesByPriority = {
 
 const priorityNames = Object.keys(placesByPriority);
 
-module.exports = {placesByPriority, priorityNames};
+module.exports = {cordons, placesByPriority, priorityNames};

@@ -5,8 +5,21 @@ div.sticky-top.bg-light.d-flex.flex-row.align-items-stretch.justify-content-cent
   div
     form(action="/download/fvf/places", method="get")
       button.btn.btn-link.pt-0(type="submit") &#8595; .XLSX
+div
+  h5.text-center
+    b= `Установлено Кордон Про М: ${data.cordons.length} шт`
+  table(class=`table table-light`)
+    tr
+      th #
+      th Наименование
+      th Адрес
+    each item, index in data.cordons
+      tr
+        td= index + 1
+        td= item[`name`]
+        td= `${item[`description`]} ${item[`address`]}`
+
 each name, index in data.priorityNames
-  div
     h5.text-center
       b= `Приоритет ${index + 1}: ${data.placesByPriority[name].length} шт`
     table(class=`table table-light`)
@@ -18,4 +31,4 @@ each name, index in data.priorityNames
         tr
           td= index + 1
           td= item[`name`]
-          td= item[`address`]
+          td= `${item[`description`]} ${item[`address`]}`

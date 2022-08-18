@@ -18,6 +18,7 @@ const {
   perekrestoks,
   radars,
   strelkas,
+  cordons,
   priorityPlaces,
 } = require(`./layers`);
 
@@ -34,6 +35,7 @@ const overlayMaps = {
   [`ФВФ Перекрестки, ${perekrestoks.quantity} шт`]: perekrestoks.layer,
   [`ФВФ Радары, ${radars.quantity} шт`]: radars.layer,
   [`ФВФ Стрелки, ${strelkas.quantity} шт`]: strelkas.layer,
+  [`ФВФ Кордон Про М, ${cordons.quantity} шт`]: cordons.layer,
   [`ФВФ места МВД (Приоритет 1), ${priorityPlaces.one.quantity} шт`]: priorityPlaces.one.layer,
   [`ФВФ места МВД (Приоритет 2), ${priorityPlaces.two.quantity} шт`]: priorityPlaces.two.layer,
   [`ФВФ места МВД (Приоритет 3), ${priorityPlaces.three.quantity} шт`]: priorityPlaces.three.layer,
@@ -50,10 +52,11 @@ const checkedLayers = [
   // perekrestoks.layer,
   // radars.layer,
   // strelkas.layer,
+  cordons.layer,
   priorityPlaces.one.layer,
   priorityPlaces.two.layer,
-  // priorityPlaces.three.layer,
-  // priorityPlaces.four.layer,
+  priorityPlaces.three.layer,
+  priorityPlaces.four.layer,
 ];
 
 const map = L.map(`map`, {
