@@ -11,6 +11,7 @@ const prepareJson = (pathToCsvFile, resultPath) => {
 prepareJson(FilePath.Nodes.CSV, FilePath.Nodes.JSON);
 prepareJson(FilePath.Objects.CSV, FilePath.Objects.JSON);
 prepareJson(FilePath.Fvf.CSV, FilePath.Fvf.JSON);
+prepareJson(FilePath.FvfPlaces.CSV, FilePath.FvfPlaces.JSON);
 prepareJson(FilePath.Ivn.CSV, FilePath.Ivn.JSON);
 prepareJson(FilePath.IvnMunCost.CSV, FilePath.IvnMunCost.JSON);
 prepareJson(FilePath.TrafficLights.CSV, FilePath.TrafficLights.JSON);

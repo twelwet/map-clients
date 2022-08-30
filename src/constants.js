@@ -33,6 +33,10 @@ const FilePath = {
     CSV: `data/csv/fvf.csv`,
     JSON: `data/json/fvf.json`,
   },
+  FvfPlaces: {
+    CSV: `data/csv/fvf-places.csv`,
+    JSON: `data/json/fvf-places.json`,
+  },
   Ivn: {
     CSV: `data/csv/ivn.csv`,
     JSON: `data/json/ivn.json`,
