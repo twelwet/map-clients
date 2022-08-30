@@ -20,21 +20,15 @@ const getStrelkas = (data) => {
   };
 };
 
-const getFvfPlaces = (data) => data.filter((item) => item[`id`].startsWith(`FVF-PLC`));
-
-const getFvfCheckedPlaces = (data) => data.filter((item) => item[`is_checked`]);
-
-const getFvfPriorityPlaces = (data, level) => data.filter((item) => item[`priority_level`] === level);
-
-// const getLinesLayer = (lines, color) => L.geoJSON(lines, {
-//   style: () => ({
-//     color,
-//     [`weight`]: 10,
-//   }),
-//   onEachFeature: (feature, layer) => {
-//     layer.bindPopup(`<b>Приоритет ${feature[`data`][`priority_level`]}</b><br>Место №${feature[`data`][`id`].slice(7)}<br>${feature[`data`][`name`]}<br>Тип дороги: "${feature[`data`][`road_type`]}"<br>${feature[`data`][`address`]}<br><b>${feature[`data`][`description`]}</b><br>${feature[`data`][`contractor`]}`);
-//   },
-// });
+const getLinesLayer = (lines, color) => L.geoJSON(lines, {
+  style: () => ({
+    color,
+    [`weight`]: 10,
+  }),
+  onEachFeature: (feature, layer) => {
+    layer.bindPopup(`Предлагаемое место МВД №${feature[`data`][`id`].slice(7)}<br>${feature[`data`][`address`]}<br>Приоритетность: ${feature[`data`][`priority_level`]}<br>ДТП-Погибло-Ранено: ${feature[`data`][`accidents_died_injured`]}`);
+  },
+});
 
 const getFvfPins = (fvfData, iconPath) => {
   const pinIcon = getPinIcon(iconPath);
@@ -71,10 +65,7 @@ module.exports = {
   getRadars,
   getStrelkas,
   getCordons,
-  getFvfPlaces,
-  getFvfCheckedPlaces,
-  getFvfPriorityPlaces,
-  // getLinesLayer,
+  getLinesLayer,
   getFvfPins,
   getPlacesFvfPins,
 };

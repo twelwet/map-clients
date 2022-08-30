@@ -2,7 +2,7 @@
 
 const L = require(`leaflet`);
 const {Icon} = require(`../constants`);
-const {fvfData} = require(`../../../data`);
+const {fvfData, fvfLines} = require(`../../../data`);
 
 const {
   getVokords,
@@ -12,10 +12,8 @@ const {
   getRadars,
   getStrelkas,
   getCordons,
-  getFvfPlaces,
-  getFvfPriorityPlaces,
   getFvfPins,
-  getPlacesFvfPins,
+  getLinesLayer,
 } = require(`./utils`);
 
 const vokords = getVokords(fvfData);
@@ -25,11 +23,6 @@ const perekrestoks = getPerekrestoks(fvfData);
 const radars = getRadars(fvfData);
 const {strelkasWorked, strelkasDamaged} = getStrelkas(fvfData);
 const cordons = getCordons(fvfData);
-const places = getFvfPlaces(fvfData);
-const priorityOnePlaces = getFvfPriorityPlaces(places, `1`);
-const priorityTwoPlaces = getFvfPriorityPlaces(places, `2`);
-const priorityThreePlaces = getFvfPriorityPlaces(places, `3`);
-const priorityFourPlaces = getFvfPriorityPlaces(places, `4`);
 
 const vokordsPins = getFvfPins(vokords, Icon.Path.VOKORD);
 const vokordsLayer = L.layerGroup(vokordsPins);
@@ -56,32 +49,20 @@ const cordonsLayer = L.layerGroup(cordonsPins);
 
 const priorityPlaces = {
   one: {
-    quantity: priorityOnePlaces.length,
-    layer: L.layerGroup([
-      // ...getLinesLayer(fvfLinesPriorityOne, `#ff0000`).getLayers(),
-      ...getPlacesFvfPins(priorityOnePlaces, Icon.Path.FVF_PRIORITY_ONE),
-    ]),
+    quantity: fvfLines.priorityOne.length,
+    layer: L.layerGroup(getLinesLayer(fvfLines.priorityOne, `#ff0000`).getLayers()),
   },
   two: {
-    quantity: priorityTwoPlaces.length,
-    layer: L.layerGroup([
-      // ...getLinesLayer(fvfLinesPriorityTwo, `#ff7f00`).getLayers(),
-      ...getPlacesFvfPins(priorityTwoPlaces, Icon.Path.FVF_PRIORITY_TWO),
-    ]),
+    quantity: fvfLines.priorityTwo.length,
+    layer: L.layerGroup(getLinesLayer(fvfLines.priorityTwo, `#ff7f00`).getLayers()),
   },
   three: {
-    quantity: priorityThreePlaces.length,
-    layer: L.layerGroup([
-      // ...getLinesLayer(fvfLinesPriorityThree, `#ccc000`).getLayers(),
-      ...getPlacesFvfPins(priorityThreePlaces, Icon.Path.FVF_PRIORITY_THREE),
-    ]),
+    quantity: fvfLines.priorityThree.length,
+    layer: L.layerGroup(getLinesLayer(fvfLines.priorityThree, `#ccc000`).getLayers()),
   },
   four: {
-    quantity: priorityFourPlaces.length,
-    layer: L.layerGroup([
-      // ...getLinesLayer(fvfLinesPriorityFour, `#bbb`).getLayers(),
-      ...getPlacesFvfPins(priorityFourPlaces, Icon.Path.FVF_PRIORITY_FOUR),
-    ]),
+    quantity: fvfLines.priorityFour.length,
+    layer: L.layerGroup(getLinesLayer(fvfLines.priorityFour, `#bbb`).getLayers()),
   },
 };
 
