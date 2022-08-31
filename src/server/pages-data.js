@@ -57,7 +57,16 @@ const trafficLights = {
   },
 };
 
-const pages = [backbone, clients, ivn, fvf, trafficLights];
+const roadMaps = {
+  title: Title.ROAD_MAPS,
+  mapScript: null,
+  link: Link.ROAD_MAPS,
+  menuName: Title.ROAD_MAPS,
+  pageName: PageName.ROAD_MAPS,
+  data: {},
+};
+
+const pages = [backbone, clients, ivn, fvf, trafficLights, roadMaps];
 
 
 const downloadableFiles = [

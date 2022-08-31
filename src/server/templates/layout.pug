@@ -8,9 +8,9 @@ html
     title= title
   body
     header
-      ul
-        each item in headerMenu
-          li(class='list-inline-item')
+      ul.d-flex
+        each item, index in headerMenu
+          li(class= (index === headerMenu.length - 1 ? `list-inline-item last-menu-item` : `list-inline-item`))
             if item[`isActive`]
               a= item[`menuName`]
             else

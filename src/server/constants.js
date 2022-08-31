@@ -6,6 +6,7 @@ const Title = {
   IVN: `ИВН`,
   FVF: `ФВФ`,
   TRAFFIC_LIGHTS: `Светофоры`,
+  ROAD_MAPS: `Дорожные карты`,
 };
 
 const PageName = {
@@ -14,6 +15,7 @@ const PageName = {
   IVN: `ivn`,
   FVF: `fvf`,
   TRAFFIC_LIGHTS: `traffic_lights`,
+  ROAD_MAPS: `road_maps`,
 };
 
 const MapScript = {
@@ -30,6 +32,7 @@ const Link = {
   IVN: `/ivn`,
   FVF: `/fvf`,
   TRAFFIC_LIGHTS: `/traffic_lights`,
+  ROAD_MAPS: `/road_maps`,
 };
 
 module.exports = {Title, PageName, MapScript, Link};

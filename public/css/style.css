@@ -9,3 +9,7 @@ html, body, #map {
 .info-container {
   height: 800px;
 }
+.last-menu-item {
+  margin-left: auto;
+  padding-right: 16px;
+}
