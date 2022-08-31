@@ -1,0 +1,23 @@
+h5
+  b= `Подключение светофоров к ЦОД`
+table(class=`table table-light`)
+  tr
+    th #
+    th Наименование
+    th Инсталляция, тыс.руб.
+    th АП, тыс.руб./мес
+  each item, index in data[`trafficLightsData`]
+    tr
+      td= index + 1
+      td= item[`address`]
+      td(class=`text-end`)= (item[`installation`] / 1000).toFixed(2)
+      td(class=`text-end`)= (item[`subscription`] / 1000).toFixed(2)
+  tr
+    td
+      b -
+    td
+      b ИТОГО
+    td(class=`text-end`)
+      b= (data[`trafficLightsData`][`total`][`installation`] / 1000).toFixed(2)
+    td(class=`text-end`)
+      b= (data[`trafficLightsData`][`total`][`subscription`] / 1000).toFixed(2)
