@@ -2,7 +2,7 @@ extends layout
 
 block main
   .p-3.mt-3.d-flex.flex-column.align-items-stretch
-    div.overflow-auto.info-container
-      include fvf-priority-tables
     div#map.p-2
+    div.info-container
+      include fvf-priority-tables
   script(src= mapScript)
