@@ -1,7 +1,7 @@
 'use strict';
 
 const {ivnMunCost, trafficLightsData} = require(`../../data`);
-const {cordons, placesByPriority, priorityNames} = require(`./prepared-fvf-data`);
+const {cordons, onlinePoints, pautinaPoints} = require(`./prepared-fvf-data`);
 const {Title, PageName, MapScript, Link} = require(`./constants`);
 
 const backbone = {
@@ -41,8 +41,8 @@ const fvf = {
   pageName: PageName.FVF,
   data: {
     cordons,
-    placesByPriority,
-    priorityNames,
+    onlinePoints,
+    pautinaPoints,
   },
 };
 
