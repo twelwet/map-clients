@@ -1,4 +1,4 @@
-div.sticky-top.bg-light.d-flex.flex-row.align-items-stretch.justify-content-center.pt-2.pb-2
+div.bg-light.d-flex.flex-row.align-items-stretch.justify-content-center.pt-2.pb-2
   div
     h5
       b Список мест размещения
@@ -9,7 +9,7 @@ div
   h5.text-center
     b= `Установлено Кордон Про М: ${data.cordons.length} шт., Онлайн: ${data.onlinePoints} шт., Паутина: ${data.pautinaPoints} шт.`
   table(class=`table table-light table-striped`)
-    tr
+    tr.sticky-top
       th #
       th Наименование
       th Дата монтажа
