@@ -1,0 +1,39 @@
+extends layout
+
+block main
+  .d-flex.justify-content-center
+    a(href=`/fvf`) Назад к карте
+  div.bg-light.d-flex.flex-row.align-items-stretch.justify-content-center.pt-2.pb-2
+    div
+      h5
+        b Список мест размещения
+    div
+      form(action="/download/fvf/places", method="get")
+        button.btn.btn-link.pt-0(type="submit") &#8595; .XLSX
+  div
+    h5.text-center
+      b= `Установлено Кордон Про М: ${data.cordons.length} шт., Онлайн: ${data.onlinePoints} шт., Паутина: ${data.pautinaPoints} шт.`
+    table(class=`table table-light table-striped`)
+      tr.sticky-top
+        th #
+        th Наименование
+        th Дата монтажа
+        th Онлайн
+        th Паутина
+        th Краткое имя
+        th Адрес
+        th ЭП
+        th Информация
+      each item, index in data.cordons
+        - var isOnline = Boolean(JSON.parse(item[`is_online`].toLowerCase()));
+        - var isPautina = Boolean(JSON.parse(item[`is_pautina`].toLowerCase()));
+        tr(style={color: `${isOnline ? `green` : `red`}`})
+          td= index + 1
+          td= item[`name`]
+          td= item[`mount_date`]
+          td= isOnline ? `да` : `нет`
+          td= isPautina ? `да` : `нет`
+          td= item[`description`]
+          td= item[`address`]
+          td= `${item[`power_supply_type`]} / ${item[`power_supply_provider`]}`
+          td= item[`info`]

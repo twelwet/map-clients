@@ -2,7 +2,7 @@ extends layout
 
 block main
   .p-3.mt-3.d-flex.flex-column.align-items-stretch
+    .d-flex.justify-content-end
+      a(href=`/fvf-list`) Список мест размещения
     div#map.p-2
-    div.info-container
-      include fvf-priority-tables
   script(src= mapScript)

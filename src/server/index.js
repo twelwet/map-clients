@@ -33,6 +33,16 @@ for (const page of pages) {
   });
 }
 
+app.get(`/fvf-list`, (req, res) => {
+  const pageContent = {
+    title: `ФВФ - Список`,
+    mapScript: null,
+    headerMenu: getHeaderMenu(`ФВФ`, pages),
+    data: pages[3][`data`],
+  };
+  res.render(`fvf-table`, pageContent);
+});
+
 for (const file of downloadableFiles) {
   app.get(`/${file.link}`, (req, res) => {
     res.download(`${DOWNLOAD_DIR}/${file.path}`, errorHandler);
