@@ -43,7 +43,7 @@ const getFvfPins = (fvfData, iconPath) => {
   for (const location of fvfData) {
     fvfPins
       .push(L.marker([location[`latitude`], location[`longitude`]], {icon: pinIcon})
-        .bindPopup(`<b>${location[`model`]}</b><br>${location[`name`]}<br>${location[`description`]}<br>Тип дороги: "${location[`road_type`]}"<br>${location[`address`]}<br>${location[`contractor`]}`));
+        .bindPopup(`<b>${location[`model`]}</b><br>${location[`name`]} ${location[`description`]}<br>Адрес: ${location[`address`]}<br>${location[`power_supply_type`]} / ${location[`power_supply_provider`]}<br><b>${location[`info`]}</b>`));
   }
 
   return fvfPins;
