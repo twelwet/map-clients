@@ -30,6 +30,7 @@ const Icon = {
     STRELKA: `images/strelka.svg`,
     STRELKA_DAMAGED: `images/strelka-damaged.svg`,
     CORDON: `images/cordon.svg`,
+    CORDON_OFFLINE: `images/cordon-offline.svg`,
     FVF_PLACES: `images/fvf-places.svg`,
     FVF_CHECKED_PLACES: `images/star-blue.svg`,
     FVF_PRIORITY_ONE: `images/priority_1.svg`,

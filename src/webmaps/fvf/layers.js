@@ -22,7 +22,7 @@ const forsazhs = getForsazhs(fvfData);
 const perekrestoks = getPerekrestoks(fvfData);
 const radars = getRadars(fvfData);
 const {strelkasWorked, strelkasDamaged} = getStrelkas(fvfData);
-const cordons = getCordons(fvfData);
+const {cordonsOnline, cordonsOffline} = getCordons(fvfData);
 
 const vokordsPins = getFvfPins(vokords, Icon.Path.VOKORD);
 const vokordsLayer = L.layerGroup(vokordsPins);
@@ -44,7 +44,9 @@ const strelkasDamagedPins = getFvfPins(strelkasDamaged, Icon.Path.STRELKA_DAMAGE
 const strelkasPins = [...strelkasWorkedPins, ...strelkasDamagedPins];
 const strelkasLayer = L.layerGroup(strelkasPins);
 
-const cordonsPins = getFvfPins(cordons, Icon.Path.CORDON);
+const cordonsOnlinePins = getFvfPins(cordonsOnline, Icon.Path.CORDON);
+const cordonsOfflinePins = getFvfPins(cordonsOffline, Icon.Path.CORDON_OFFLINE);
+const cordonsPins = [...cordonsOnlinePins, ...cordonsOfflinePins];
 const cordonsLayer = L.layerGroup(cordonsPins);
 
 const priorityPlaces = {

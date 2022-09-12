@@ -8,7 +8,13 @@ const getPotoks = (data) => data.filter((item) => item[`model`].startsWith(`По
 const getForsazhs = (data) => data.filter((item) => item[`model`].startsWith(`Форсаж`));
 const getPerekrestoks = (data) => data.filter((item) => item[`model`].startsWith(`Перекресток`));
 const getRadars = (data) => data.filter((item) => item[`model`].startsWith(`MultаRadar`));
-const getCordons = (data) => data.filter((item) => item[`model`].startsWith(`Кордон`));
+
+const getCordons = (data) => {
+  const allCordons = data.filter((item) => item[`model`].startsWith(`Кордон`));
+  const cordonsOnline = allCordons.filter((item) => item[`is_online`] === `TRUE`);
+  const cordonsOffline = allCordons.filter((item) => item[`is_online`] === `FALSE`);
+  return {cordonsOnline, cordonsOffline};
+};
 
 const getStrelkas = (data) => {
   const allStrelkas = data.filter((item) => item[`model`].startsWith(`Стрелка-М`));
