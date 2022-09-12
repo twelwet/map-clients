@@ -43,9 +43,9 @@ const overlayMaps = {
 };
 
 const checkedLayers = [
-  backbone.layer,
-  cityNet.layer,
-  jkhNet.layer,
+  // backbone.layer,
+  // cityNet.layer,
+  // jkhNet.layer,
   // vokords.layer,
   // forsazhs.layer,
   // potoks.layer,
@@ -53,10 +53,10 @@ const checkedLayers = [
   // radars.layer,
   // strelkas.layer,
   cordons.layer,
-  priorityPlaces.one.layer,
-  priorityPlaces.two.layer,
-  priorityPlaces.three.layer,
-  priorityPlaces.four.layer,
+  // priorityPlaces.one.layer,
+  // priorityPlaces.two.layer,
+  // priorityPlaces.three.layer,
+  // priorityPlaces.four.layer,
 ];
 
 const map = L.map(`map`, {
