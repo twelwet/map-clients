@@ -1,6 +1,7 @@
 'use strict';
 
 const L = require(`leaflet`);
+const {getPinIcon} = require(`../map-utils`);
 
 const getDistance = (item) => {
   const coordinates = item.feature.geometry.coordinates;
@@ -31,16 +32,21 @@ const getFiberLayer = (fiberLines) => L.geoJSON(fiberLines, {
   },
 });
 
-const getNodesPins = (nodes) => {
-  const nodesPins = [];
-  for (const node of nodes) {
-    nodesPins.push(L.marker([node[`latitude`], node[`longitude`]]).bindPopup(`${node[`id`]} "${node[`name`]}" ${node[`address`]}`));
+const getPins = (data, iconPath) => {
+  const pinIcon = getPinIcon(iconPath);
+
+  const pins = [];
+  for (const item of data) {
+    pins
+      .push(L.marker([item[`latitude`], item[`longitude`]], {icon: pinIcon})
+        .bindPopup(`${item[`id`]} "${item[`name`]}" ${item[`address`]}`));
   }
-  return nodesPins;
+
+  return pins;
 };
 
 module.exports = {
   getFiberLayer,
-  getNodesPins,
+  getPins,
   getWholeDistance,
 };

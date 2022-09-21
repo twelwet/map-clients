@@ -16,6 +16,8 @@ const MapSetting = {
 
 const Icon = {
   Path: {
+    NODE: `images/node.svg`,
+    AB_NODE: `images/ab_node.svg`,
     CLIENT: `images/marker-client.svg`,
     REMOTE_CLIENT: `images/marker-remote-client.svg`,
     UN_CLIENT: `images/marker-un-client.svg`,

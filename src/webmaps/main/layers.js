@@ -4,11 +4,13 @@ const L = require(`leaflet`);
 const {getTileLayer} = require(`../map-utils`);
 const {
   getFiberLayer,
-  getNodesPins,
+  getPins,
   getWholeDistance,
 } = require(`./utils`);
 
-const {nodes, backboneNet, cityNet, jkhNet} = require(`../../../data`);
+const {Icon} = require(`../constants`);
+
+const {nodes, abNodes, backboneNet, cityNet, jkhNet} = require(`../../../data`);
 
 const fiberLayerBackbone = getFiberLayer(backboneNet);
 const fiberLayerCityNet = getFiberLayer(cityNet);
@@ -20,8 +22,11 @@ const backboneDistance = (getWholeDistance(fiberLayerBackbone) / 1000).toFixed(0
 const cityNetDistance = (getWholeDistance(fiberLayerCityNet) / 1000).toFixed(0);
 const jkhNetDistance = (getWholeDistance(fiberLayerJkhNet) / 1000).toFixed(0);
 
-const nodesPins = getNodesPins(nodes);
+const nodesPins = getPins(nodes, Icon.Path.NODE);
 const nodesLayer = L.layerGroup(nodesPins);
+
+const abNodesPins = getPins(abNodes, Icon.Path.AB_NODE);
+const abNodesLayer = L.layerGroup(abNodesPins);
 
 module.exports = {
   tileLayer,
@@ -40,5 +45,9 @@ module.exports = {
   nodes: {
     layer: nodesLayer,
     quantity: nodesPins.length
+  },
+  abNodes: {
+    layer: abNodesLayer,
+    quantity: abNodesPins.length,
   },
 };

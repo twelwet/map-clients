@@ -6,7 +6,7 @@ const {ivnBoxes, ivnCameras, ivnMunCameras, ivnMunBoxes} = require(`../../data`)
 const stageZero = {
   boxes: ivnMunBoxes.filter((item) => item[`stage`] === `0`),
   cameras: ivnMunCameras.filter((item) => item[`stage`] === `0`),
-}
+};
 
 const stageOne = {
   boxes: ivnBoxes.filter((item) => item[`stage`] === `1`),
@@ -47,7 +47,7 @@ const getStageData = (stageData, filename) => {
     all: item[`cameras`][`all`],
   }));
 
-  saveToFile(`data/temp/${filename}`, getCsvFromJson(result, [`stage` ,`frontier`, `static`, `dynamic`, `biometric`, `all`]))
+  saveToFile(`data/temp/${filename}`, getCsvFromJson(result, [`stage`, `frontier`, `static`, `dynamic`, `biometric`, `all`]))
     .then(() => console.log(`Operation is successful.`));
 };
 

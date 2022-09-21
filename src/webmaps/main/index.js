@@ -3,12 +3,13 @@
 const L = require(`leaflet`);
 const {MapSetting} = require(`../constants`);
 const {mapIconsConfig} = require(`../map-utils`);
-const {tileLayer, nodes, backbone, cityNet, jkhNet} = require(`./layers`);
+const {tileLayer, nodes, abNodes, backbone, cityNet, jkhNet} = require(`./layers`);
 
 mapIconsConfig();
 
 const overlayMaps = {
-  [`Узлы Магистрали`]: nodes.layer,
+  [`Узлы Магистрали, ${nodes.quantity} шт`]: nodes.layer,
+  [`Аб. окончания, ${abNodes.quantity} шт`]: abNodes.layer,
   [`ВОЛС Магистраль, ${backbone.distance} км`]: backbone.layer,
   [`ВОЛС СПД города, ${cityNet.distance} км`]: cityNet.layer,
   [`ВОЛС Дирекция ЖКХ, ${jkhNet.distance} км`]: jkhNet.layer,
