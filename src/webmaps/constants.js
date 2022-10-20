@@ -8,7 +8,7 @@ const MapSetting = {
   ACCESS_TOKEN: `lYi7ttPIGK3BC5YO21nCScB2X17Vax7OAfLb6v5K7wt9x9zCeFVALLTWCsWvtlpv`,
   ZOOM_OFFSET: -1,
   MIN_ZOOM: 6,
-  MAX_ZOOM: 18,
+  MAX_ZOOM: 30,
   SUBDOMAINS: `abcd`,
   LAYER_URL: `https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}`,
   ATTRIBUTION: `<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`,
